@@ -74,6 +74,16 @@ MVP 用「会话完成标记 + 校验和 + 重试」保证可恢复；生产版�
 - 指标：`data_to_training_latency = delivery_finished_at - session_completed_at`。
 - 生产路线图：带宽限速、断点续传、数据胶囊（物理寄送）。
 
+## 失败恢复、并发与运维
+
+- **单机 pipeline 文件锁**：`data/edr.db.lock`（filelock）防止两个 pipeline 同时处理同一批 episode；拿不到锁时返回 `locked: true`，不做任何写入。
+- **可重试状态机**：episode 记录 `attempts` 与 `last_error`；处理状态包含 `discovered`、`quality_pass`、`quality_review`、`error`。质量通过但转码失败的 episode 会在下一次 pipeline 自动重试，默认最多 3 次（`pipeline.max_attempts`），超过后置为 `failed`。
+- **人工重排**：`python -m edr.cli requeue --config ...` 把 `error`/`failed` 重置为 `discovered`，用于修复 FFmpeg/权限/磁盘问题后重跑。
+- **磁盘空间检查**：转码前检查 hot 层剩余空间；低于 `pipeline.min_free_gb` 时拒绝转码并记录错误，避免写出半包。
+- **重跑清理**：转码前清理 hot 中同 episode 的旧输出，避免崩溃留下的半成品混入新包。
+- **交付优先级**：`quality_status=pass` 优先于 `review`，同优先级按新到旧；这是当前实现的简单策略，带宽限速与更复杂队列在路线图。
+- **S3/MinIO 状态**：S3 路径已实现（boto3、环境变量凭证、重试、checkpoint），但当前开发环境未启动 Docker/MinIO，尚未实测；本地交付已实测。部署前必须验证 S3。
+
 ## 为什么不用 bcache/dm-cache
 
 - 通用块层缓存不感知「录制会话」；bcache 默认跳过顺序 IO，而具身数据正是大块顺序写。

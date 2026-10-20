@@ -67,6 +67,12 @@ class DeliveryConfig:
 
 
 @dataclass
+class PipelineConfig:
+    max_attempts: int = 3
+    min_free_gb: float = 2.0
+
+
+@dataclass
 class ServerConfig:
     host: str = "127.0.0.1"
     port: int = 8080
@@ -81,6 +87,7 @@ class Config:
     transcode: TranscodeConfig = field(default_factory=TranscodeConfig)
     tiering: TieringConfig = field(default_factory=TieringConfig)
     delivery: DeliveryConfig = field(default_factory=DeliveryConfig)
+    pipeline: PipelineConfig = field(default_factory=PipelineConfig)
     server: ServerConfig = field(default_factory=ServerConfig)
 
     def ensure_dirs(self) -> None:
@@ -139,7 +146,7 @@ def load_config(path: str | Path = "config.yaml") -> Config:
     else:
         delivery_raw["local_dir"] = _resolve(base, "data/delivered")
     delivery = DeliveryConfig(**delivery_raw)
-
+    pipeline = PipelineConfig(**raw.get("pipeline", {}))
     server = ServerConfig(**raw.get("server", {}))
     cfg = Config(
         base_dir=base,
@@ -149,6 +156,7 @@ def load_config(path: str | Path = "config.yaml") -> Config:
         transcode=transcode,
         tiering=tiering,
         delivery=delivery,
+        pipeline=pipeline,
         server=server,
     )
     cfg.ensure_dirs()

@@ -25,6 +25,12 @@ def main(argv: list[str] | None = None) -> int:
     sub.add_parser("deliver", help="deliver all packaged episodes")
     sub.add_parser("tier", help="move eligible episodes to cold tier")
     sub.add_parser("report", help="print stats")
+    requeue_parser = sub.add_parser("requeue", help="reset failed/error episodes for another attempt")
+    requeue_parser.add_argument(
+        "--status",
+        default="error,failed",
+        help="comma-separated statuses to requeue (default: error,failed)",
+    )
     pipeline_parser = sub.add_parser("pipeline", help="scan + quality + transcode + deliver + tier")
     pipeline_parser.add_argument("--limit", type=int, default=1000)
 
@@ -46,6 +52,9 @@ def main(argv: list[str] | None = None) -> int:
         _print(tier_episodes(cfg, db))
     elif args.command == "report":
         _print(db.stats())
+    elif args.command == "requeue":
+        statuses = tuple(s.strip() for s in args.status.split(",") if s.strip())
+        _print({"requeued": db.requeue_episodes(statuses), "statuses": statuses})
     elif args.command == "serve":
         import uvicorn
         from .api import create_app

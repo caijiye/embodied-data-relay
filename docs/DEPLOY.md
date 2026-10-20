@@ -68,6 +68,20 @@ delivery:
   prefix: embodied
 ```
 
+失败恢复与资源保护：
+
+```yaml
+pipeline:
+  max_attempts: 3      # 失败 episode 最多重试次数，超过后置为 failed
+  min_free_gb: 2.0     # 转码前 hot 层最低剩余空间
+```
+
+`pipeline` 使用 `data/edr.db.lock` 文件锁，禁止两个进程同时处理同一批数据。修复 FFmpeg/权限/磁盘问题后，可以重排失败项：
+
+```bash
+uv run python -m edr.cli --config /etc/edr/config.yaml requeue
+```
+
 **不要把 access key / secret 写进仓库。** 用环境变量：
 
 ```bash

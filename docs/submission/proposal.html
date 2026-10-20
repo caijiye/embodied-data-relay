@@ -205,7 +205,7 @@
   <p>热层 NVMe 保存最近会话、待交付与优先 episode；冷层 HDD 保存已交付历史数据；SQLite 常驻元数据。训练端按 episode 取用，不需要整包下载。</p>
 
   <h3>5. 交付调度</h3>
-  <p>本地目录或 S3/MinIO；失败重试；记录每次交付的 bytes、attempts、开始/完成时间，计算「数据到训练」延迟。路线图：带宽限速、优先级队列、断点续传、物理数据胶囊。</p>
+  <p>本地目录或 S3/MinIO：本地交付已实测；S3 路径已实现（环境变量凭证、重试、checkpoint），需在部署环境验证。按 quality pass → review 的简单优先级交付，记录每次交付的 bytes、attempts、开始/完成时间，计算「数据到训练」延迟。路线图：带宽限速、更复杂队列、断点续传、物理数据胶囊。</p>
 
   <h3>架构</h3>
   <pre><code>incoming/session_x/episode_y/
@@ -303,6 +303,7 @@
     <li><b>交付证据链：</b>manifest 记录每个文件的 sha256、原始/压缩字节、质量报告；交付记录记录 attempts 与延迟。</li>
     <li><b>不删除原则：</b>隔离数据仍保留在原始/冷层，人工可复查；避免现场误删唯一素材。</li>
     <li><b>可观测：</b>dashboard 一屏展示质量分布、热冷层、交付队列与 benchmark。</li>
+    <li><b>失败恢复：</b>episode 记录 attempts/last_error；转码失败自动重试（默认 3 次），超过后 failed；pipeline 文件锁防止并发；磁盘不足拒绝转码；<code>edr requeue</code> 人工重排。</li>
   </ul>
 
   <div class="warn"><b>边界与诚实声明：</b>当前 MVP 不做任务成功判定、不做自动标注、不做多节点集群；质量门禁是图像质量指标，不是「数据价值」的最终判断。真实数据的减量比例会低于合成数据。</div>
@@ -390,7 +391,7 @@ python scripts/benchmark.py --clean --sessions 2 --episodes 7 \
 scripts/             合成采集器、benchmark、bootstrap
 hardware/            BOM、接线、OpenSCAD 外壳、ESP32 固件
 docs/                架构、部署、benchmark、参赛说明、视频脚本
-tests/               8 个 pytest（质量门禁、管线、API）
+tests/               12 个 pytest（质量门禁、管线、API、重试、分层、扫描）
 .github/             CI、issue/PR 模板</code></pre>
 
   <h3>可复现路径</h3>
@@ -404,9 +405,9 @@ tests/               8 个 pytest（质量门禁、管线、API）
 
   <h3>测试与质量</h3>
   <ul>
-    <li>8 个 pytest：质量门禁 6 个、管线 1 个、API 1 个；CI 在 Ubuntu + Python 3.12 + FFmpeg 下运行。</li>
+    <li>12 个 pytest：质量门禁 6 个、管线 1 个、API 2 个、重试 1 个、分层 1 个、扫描 1 个；CI 在 Ubuntu + Python 3.12 + FFmpeg 下运行。</li>
     <li>质量门禁测试覆盖 sharp/blur/dark/black/duplicate/bright 六类输入。</li>
-    <li>交付路径支持 local 与 S3（MinIO）；S3 凭证通过环境变量注入。</li>
+    <li>本地交付已实测；S3/MinIO 路径已实现（环境变量凭证、重试、checkpoint），需在部署环境验证。</li>
   </ul>
 </section>
 

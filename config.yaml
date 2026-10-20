@@ -31,6 +31,10 @@ tiering:
   hot_sessions: 3
   auto_tier: true
 
+pipeline:
+  max_attempts: 3
+  min_free_gb: 2.0
+
 delivery:
   enabled: true
   target: local

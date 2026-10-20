@@ -1,7 +1,10 @@
 from __future__ import annotations
 
+import shutil
 from pathlib import Path
 from typing import Any
+
+from filelock import FileLock, Timeout
 
 from .config import Config
 from .db import Database
@@ -13,18 +16,34 @@ from .transcode import compact_episode
 
 
 def run_pipeline(cfg: Config, db: Database, limit: int = 1000) -> dict[str, Any]:
+    lock = FileLock(str(cfg.paths.db) + ".lock", timeout=0)
+    try:
+        lock.acquire()
+    except Timeout:
+        return {"locked": True, "message": "another pipeline is already running"}
+    try:
+        return _run_pipeline(cfg, db, limit)
+    finally:
+        lock.release()
+
+
+def _run_pipeline(cfg: Config, db: Database, limit: int) -> dict[str, Any]:
     ready = scan_incoming(cfg, db)
     summary: dict[str, Any] = {
+        "locked": False,
         "sessions_ready": len(ready),
         "quality_checked": 0,
         "packaged": 0,
         "quarantined": 0,
         "incomplete": 0,
+        "retried": 0,
         "errors": 0,
     }
 
-    for episode in db.list_episodes(status="discovered", limit=limit):
+    for episode in db.list_episodes_for_processing(cfg.pipeline.max_attempts, limit=limit):
         episode_dir = Path(episode["path"])
+        if int(episode.get("attempts") or 0) > 0:
+            summary["retried"] += 1
         try:
             report = analyze_episode(episode_dir, cfg.quality)
             db.update_episode_quality(int(episode["id"]), report)
@@ -52,7 +71,16 @@ def run_pipeline(cfg: Config, db: Database, limit: int = 1000) -> dict[str, Any]
                 summary["quarantined"] += 1
                 continue
 
+            free = shutil.disk_usage(str(cfg.paths.hot)).free
+            required = int(cfg.pipeline.min_free_gb * (1024**3))
+            if free < required:
+                raise RuntimeError(
+                    f"insufficient free space on hot tier: {free / 1e9:.2f} GB < {cfg.pipeline.min_free_gb} GB"
+                )
+
             out_dir = cfg.paths.hot / episode["session_name"] / episode["name"]
+            if out_dir.exists():
+                shutil.rmtree(out_dir)
             manifest = compact_episode(episode_dir, out_dir, cfg.transcode, report)
             db.update_episode_package(int(episode["id"]), str(out_dir), int(manifest["compact_bytes"]), manifest)
             db.add_event(
@@ -67,12 +95,15 @@ def run_pipeline(cfg: Config, db: Database, limit: int = 1000) -> dict[str, Any]
             )
             summary["packaged"] += 1
         except Exception as exc:
-            db.set_episode_status(int(episode["id"]), "error")
+            status, attempts = db.mark_episode_error(
+                int(episode["id"]), str(exc), cfg.pipeline.max_attempts
+            )
             db.add_event(
                 "error",
                 "pipeline",
-                f"episode failed: {episode['name']}",
-                {"error": str(exc)},
+                f"episode failed: {episode['name']} "
+                f"(attempt {attempts}/{cfg.pipeline.max_attempts}, {status})",
+                {"error": str(exc), "episode_id": int(episode["id"])},
             )
             summary["errors"] += 1
 

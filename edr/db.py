@@ -45,6 +45,8 @@ CREATE TABLE IF NOT EXISTS episodes (
   tier TEXT NOT NULL DEFAULT 'incoming',
   package_path TEXT,
   status TEXT NOT NULL DEFAULT 'discovered',
+  attempts INTEGER NOT NULL DEFAULT 0,
+  last_error TEXT,
   created_at TEXT NOT NULL,
   updated_at TEXT NOT NULL,
   UNIQUE(session_id, name),
@@ -110,6 +112,10 @@ class Database:
             columns = {row[1] for row in conn.execute("PRAGMA table_info(episodes)").fetchall()}
             if "manifest_json" not in columns:
                 conn.execute("ALTER TABLE episodes ADD COLUMN manifest_json TEXT")
+            if "attempts" not in columns:
+                conn.execute("ALTER TABLE episodes ADD COLUMN attempts INTEGER NOT NULL DEFAULT 0")
+            if "last_error" not in columns:
+                conn.execute("ALTER TABLE episodes ADD COLUMN last_error TEXT")
 
     # ---- sessions ----
 
@@ -279,7 +285,7 @@ class Database:
         with self.connect() as conn:
             conn.execute(
                 "UPDATE episodes SET package_path=?, compact_bytes=?, tier='hot', status='packaged', "
-                "manifest_json=?, updated_at=? WHERE id=?",
+                "manifest_json=?, attempts=0, last_error=NULL, updated_at=? WHERE id=?",
                 (
                     package_path,
                     compact_bytes,
@@ -323,11 +329,52 @@ class Database:
             params.append(session_id)
         if clauses:
             sql += " WHERE " + " AND ".join(clauses)
-        sql += " ORDER BY e.id DESC LIMIT ?"
+        sql += (
+            " ORDER BY CASE e.quality_status WHEN 'pass' THEN 0 WHEN 'review' THEN 1 ELSE 2 END, "
+            "e.id DESC LIMIT ?"
+        )
         params.append(limit)
         with self.connect() as conn:
             rows = conn.execute(sql, params).fetchall()
             return [dict(r) for r in rows]
+
+    def list_episodes_for_processing(self, max_attempts: int, limit: int = 1000) -> list[dict[str, Any]]:
+        with self.connect() as conn:
+            rows = conn.execute(
+                """
+                SELECT e.*, s.name AS session_name
+                FROM episodes e JOIN sessions s ON s.id = e.session_id
+                WHERE e.status IN ('discovered','quality_pass','quality_review','error')
+                  AND e.attempts < ?
+                ORDER BY e.id ASC
+                LIMIT ?
+                """,
+                (max_attempts, limit),
+            ).fetchall()
+            return [dict(r) for r in rows]
+
+    def requeue_episodes(self, statuses: tuple[str, ...] = ("error", "failed")) -> int:
+        if not statuses:
+            return 0
+        placeholders = ",".join("?" for _ in statuses)
+        with self.connect() as conn:
+            cur = conn.execute(
+                f"UPDATE episodes SET status='discovered', attempts=0, last_error=NULL, updated_at=? "
+                f"WHERE status IN ({placeholders})",
+                (utcnow(), *statuses),
+            )
+            return int(cur.rowcount or 0)
+
+    def mark_episode_error(self, episode_id: int, error: str, max_attempts: int) -> tuple[str, int]:
+        with self.connect() as conn:
+            row = conn.execute("SELECT attempts FROM episodes WHERE id=?", (episode_id,)).fetchone()
+            attempts = int(row["attempts"] or 0) + 1
+            status = "failed" if attempts >= max_attempts else "error"
+            conn.execute(
+                "UPDATE episodes SET attempts=?, last_error=?, status=?, updated_at=? WHERE id=?",
+                (attempts, error, status, utcnow(), episode_id),
+            )
+            return status, attempts
 
     def get_episode(self, episode_id: int) -> dict[str, Any] | None:
         with self.connect() as conn:

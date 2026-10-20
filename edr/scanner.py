@@ -77,6 +77,16 @@ def scan_incoming(cfg: Config, db: Database) -> list[str]:
                 )
             continue
 
+        symlinks = [p for p in session_dir.rglob("*") if p.is_symlink()]
+        if session_dir.is_symlink() or symlinks:
+            db.add_event(
+                "error",
+                "scanner",
+                f"session rejected: symlinks are not allowed",
+                {"path": str(session_dir), "count": len(symlinks)},
+            )
+            continue
+
         meta = _read_json(session_dir / "meta.json")
         raw_bytes = _dir_bytes(session_dir)
         marker = session_dir / "_COMPLETE"

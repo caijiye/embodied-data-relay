@@ -10,7 +10,7 @@ cd embodied-data-relay
 uv venv --python 3.12
 uv pip install -e ".[dev]"
 ffmpeg -version   # 必须
-pytest -q         # 8 个测试应通过
+pytest -q         # 12 个测试应通过
 ```
 
 可选：

@@ -76,7 +76,7 @@ function renderSessions(sessions) {
     const tr = document.createElement("tr");
     const quality = Number(s.avg_quality || 0);
     const status = String(s.status || "unknown");
-    const allowed = new Set(["delivered", "packaged", "quarantined", "error", "quality_pass", "discovered", "quality_review"]);
+    const allowed = new Set(["delivered", "packaged", "quarantined", "error", "failed", "quality_pass", "discovered", "quality_review"]);
     const statusClass = allowed.has(status) ? status : "";
     const cells = [
       s.name || "-",
