@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>具身数据驿 · 第四届开放原子大赛 2026 参赛作品介绍</title>
+<style>
+  @page { size: A4; margin: 17mm 15mm 16mm 15mm; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    color: #1b2733;
+    background: #ffffff;
+    font-family: "Noto Sans CJK SC", "Source Han Sans SC", "Microsoft YaHei", "PingFang SC", sans-serif;
+    font-size: 10.2pt;
+    line-height: 1.62;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  h1, h2, h3, h4 { color: #102a43; line-height: 1.25; margin: 0 0 8px; }
+  h1 { font-size: 26pt; letter-spacing: -0.5px; }
+  h2 { font-size: 16pt; margin-top: 4px; padding-bottom: 6px; border-bottom: 2px solid #d9e2ec; }
+  h3 { font-size: 12pt; margin-top: 16px; }
+  p { margin: 6px 0; }
+  ul, ol { margin: 6px 0 6px 20px; padding: 0; }
+  li { margin: 3px 0; }
+  small, .small { font-size: 8.6pt; color: #52606d; }
+  .muted { color: #52606d; }
+  .kicker { color: #2f855a; font-size: 8.5pt; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; }
+  .cover {
+    height: 252mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 6mm 2mm 2mm;
+  }
+  .cover .brandline { display: flex; align-items: center; gap: 10px; font-size: 9pt; color: #52606d; }
+  .logo { width: 26px; height: 26px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; padding: 4px; border: 1px solid #bcccdc; border-radius: 6px; }
+  .logo span { background: #2f855a; border-radius: 1px; }
+  .logo span:nth-child(2) { background: #2b6cb0; }
+  .logo span:nth-child(3) { background: #b7791f; }
+  .cover h1 { font-size: 38pt; margin: 0; }
+  .cover .en { font-size: 13pt; color: #486581; letter-spacing: 2px; margin-top: 4px; }
+  .cover .tagline { font-size: 15pt; color: #243b53; margin-top: 22px; max-width: 150mm; }
+  .cover .meta { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; font-size: 10pt; margin-top: 26px; }
+  .cover .meta div { border-top: 1px solid #d9e2ec; padding-top: 8px; }
+  .cover .meta span { display: block; color: #829ab1; font-size: 8pt; letter-spacing: 1px; margin-bottom: 2px; }
+  .cover .draft { display: inline-block; margin-top: 18px; font-size: 8.5pt; color: #b7791f; border: 1px solid #f0d9a8; background: #fffaf0; padding: 5px 9px; border-radius: 4px; }
+  .page-break { page-break-before: always; }
+  .avoid { page-break-inside: avoid; }
+  .lead { font-size: 11pt; color: #243b53; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .card { border: 1px solid #d9e2ec; border-radius: 6px; padding: 10px 12px; background: #fbfdff; }
+  .card h4 { margin: 0 0 4px; font-size: 10.5pt; }
+  .card p { margin: 3px 0; font-size: 9.2pt; color: #486581; }
+  .stat { border: 1px solid #d9e2ec; border-radius: 6px; padding: 10px 12px; background: #f8fbfd; }
+  .stat strong { display: block; font-size: 19pt; color: #1f6f50; line-height: 1.1; }
+  .stat span { font-size: 8.3pt; color: #52606d; }
+  .flow { display: flex; align-items: stretch; gap: 0; margin: 12px 0 6px; }
+  .flow .step { flex: 1; background: #f0f7f4; border: 1px solid #b7e0cd; padding: 8px 7px; text-align: center; }
+  .flow .step:first-child { border-radius: 6px 0 0 6px; }
+  .flow .step:last-child { border-radius: 0 6px 6px 0; }
+  .flow .step b { display: block; font-size: 9pt; color: #1f6f50; }
+  .flow .step span { display: block; font-size: 7.8pt; color: #486581; margin-top: 3px; }
+  .flow .arrow { width: 14px; display: flex; align-items: center; justify-content: center; color: #829ab1; font-size: 10pt; }
+  table { width: 100%; border-collapse: collapse; margin: 8px 0 10px; font-size: 8.8pt; page-break-inside: avoid; }
+  th, td { border: 1px solid #d9e2ec; padding: 5px 7px; vertical-align: top; text-align: left; }
+  th { background: #f0f4f8; color: #243b53; font-weight: 700; }
+  td.num, th.num { text-align: right; white-space: nowrap; }
+  .note { border-left: 3px solid #2f855a; background: #f0f7f4; padding: 8px 11px; margin: 10px 0; font-size: 9.3pt; }
+  .warn { border-left: 3px solid #b7791f; background: #fffaf0; padding: 8px 11px; margin: 10px 0; font-size: 9.3pt; }
+  .shot { width: 100%; border: 1px solid #bcccdc; border-radius: 6px; margin: 8px 0; }
+  .shot.one { width: 66%; display: block; margin: 8px auto 4px; }
+  .caption { font-size: 8.2pt; color: #627d98; text-align: center; margin-top: -2px; }
+  code, .mono { font-family: "Cascadia Mono", "Consolas", monospace; font-size: 8.6pt; background: #f0f4f8; padding: 1px 4px; border-radius: 3px; }
+  pre { background: #102a43; color: #e6f0f7; padding: 9px 11px; border-radius: 5px; font-size: 8.1pt; line-height: 1.5; overflow-x: hidden; white-space: pre-wrap; page-break-inside: avoid; }
+  pre code { background: transparent; color: inherit; padding: 0; }
+  .refs { font-size: 8.2pt; color: #52606d; }
+  .refs li { margin: 2px 0; }
+  .footer-note { margin-top: 16px; padding-top: 8px; border-top: 1px solid #d9e2ec; font-size: 8pt; color: #829ab1; }
+  .toc { columns: 2; column-gap: 24px; font-size: 9.5pt; }
+  .toc div { padding: 3px 0; border-bottom: 1px dotted #d9e2ec; }
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<section class="cover">
+  <div>
+    <div class="brandline">
+      <div class="logo"><span></span><span></span><span></span></div>
+      <div>第四届开放原子大赛 · 2026 开源行业解决方案创新赛</div>
+    </div>
+    <div style="margin-top: 48mm;">
+      <div class="kicker">TRACK 02 · OPEN-SOURCE SMART HARDWARE</div>
+      <h1>具身数据驿</h1>
+      <div class="en">EMBODIED DATA RELAY</div>
+      <div class="tagline">把「原始 TB」变成「可训练小时」：<br>采集现场的数据减量、分层与交付加速一体机。</div>
+      <div class="draft">DRAFT · 2026-10-20 · 待补：申报主体 / 团队成员 / 演示视频链接</div>
+    </div>
+  </div>
+  <div>
+    <div class="meta">
+      <div><span>参赛赛道</span>开源智能硬件解决方案</div>
+      <div><span>申报主体</span>【待填：企业 / 高校 / 科研机构 / 开源社区 / 学生团队 / 联合申报】</div>
+      <div><span>项目负责人</span>【待填】</div>
+      <div><span>团队人数</span>【待填】</div>
+      <div><span>代码仓库</span>【待填：公开仓库链接】</div>
+      <div><span>演示视频</span>【待填】</div>
+    </div>
+    <div class="footer-note">软件 Apache-2.0 · 硬件设计 CERN-OHL-S-2.0 · 文档 CC BY 4.0</div>
+  </div>
+</section>
+
+<!-- ============ 1. ONE PAGE ============ -->
+<section class="page-break">
+  <div class="kicker">01 · 一页看懂</div>
+  <h2>不是更便宜的存储，而是采集现场的数据减量站</h2>
+  <p class="lead">具身智能的数据瓶颈，不是「存不下」，而是「存了大量不可用数据，还传不走」。具身数据驿在采集现场完成会话级无损写入、质量门禁、训练格式压缩、热冷分层和可恢复交付，把原始 TB 变成可训练小时。</p>
+
+  <div class="grid-3" style="margin-top: 12px;">
+    <div class="stat"><strong>13.53×</strong><span>10 Mbps 上行下端到端加速<br>（123.9 s → 9.2 s，合成数据）</span></div>
+    <div class="stat"><strong>29.4%</strong><span>质量门禁剔除的原始字节<br>（模糊/过暗/重复/黑帧/过曝）</span></div>
+    <div class="stat"><strong>99.3%</strong><span>可用片段编码减量<br>（合成 PNG 上界；真实数据更低）</span></div>
+  </div>
+
+  <div class="flow" style="margin-top: 14px;">
+    <div class="step"><b>01 采集</b><span>多相机 / MCAP / 状态流</span></div>
+    <div class="arrow">→</div>
+    <div class="step"><b>02 会话写入</b><span>NVMe 追加缓冲 + 掉电保护</span></div>
+    <div class="arrow">→</div>
+    <div class="step"><b>03 质量门禁</b><span>模糊/曝光/重复/黑帧</span></div>
+    <div class="arrow">→</div>
+    <div class="step"><b>04 减量分层</b><span>H.264 / 热 NVMe / 冷 HDD</span></div>
+    <div class="arrow">→</div>
+    <div class="step"><b>05 交付</b><span>按 episode 优先级 / 可恢复</span></div>
+  </div>
+
+  <img class="shot one" src="../assets/dashboard.png" alt="具身数据驿仪表盘">
+  <div class="caption">仪表盘：质量门禁、减量、热冷分层、交付延迟与 benchmark 一屏可见</div>
+
+  <div class="grid-2" style="margin-top: 10px;">
+    <div class="card">
+      <h4>为什么是硬件项目</h4>
+      <p>交付形态是一台可复现的边缘数据站：小主机 + NVMe + HDD + UPS + ESP32 健康监控。BOM、接线、3D 外壳、固件全部开源，别人能照着装出来。</p>
+    </div>
+    <div class="card">
+      <h4>为什么不是 NAS / 缓存盘</h4>
+      <p>通用 NAS 与 bcache/dm-cache 不感知录制会话；具身数据是大块顺序写，bcache 默认还会绕过顺序 IO。我们把「会话封存、质量门禁、交付优先级」放在存储路径里。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. PROBLEM ============ -->
+<section class="page-break">
+  <div class="kicker">02 · 问题</div>
+  <h2>具身数据的三重成本：量大、可用率低、交付慢</h2>
+
+  <h3>数据量：从 TB 到 PB</h3>
+  <ul>
+    <li>公开数据集规模：AgiBot World Alpha 约 <b>9.66 TB</b>（100 万+ 轨迹、约 2976 小时）；NVIDIA 开放物理 AI 数据集 <b>15 TB</b> / 32 万条轨迹。</li>
+    <li>原始录制更夸张：单路 1080p RGB 30fps 未压缩约 <b>187 MB/s</b>，8 路约 <b>1.5 GB/s</b>；32 线激光 10Hz 约 30-50 GB/小时；8 小时 RGB-D 约 500 GB。</li>
+    <li>产业侧：全国已启用 <b>70+</b> 具身智能训练场，40+ 在建/规划；单客户数据订单从几万小时向百万小时演进。</li>
+  </ul>
+
+  <h3>可用率：大量素材进不了训练</h3>
+  <p>有从业者给出的口径是：原始素材约只有 <b>三成</b> 能真正用于训练。模糊、过暗、遮挡、重复、失败片段如果不在现场处理，就会占用存储、带宽和后续清洗人力。</p>
+
+  <h3>交付：弱网上行是硬瓶颈</h3>
+  <ul>
+    <li>1 TB 数据走 100 Mbps 理想也要约 <b>22 小时</b>；10 Mbps 约 <b>9 天</b>。</li>
+    <li>采集现场通常没有专线；数据要先回传、再清洗、再训练，迭代周期被拉长。</li>
+    <li>行业数据成本：人类中心数据约 50-100 元/小时，遥操作数据约 250-350 元/小时；100 万小时对应 1-2 亿元。</li>
+  </ul>
+
+  <div class="warn"><b>核心判断：</b>如果能在采集现场先剔除不可用片段、再把可用片段压成训练就绪格式，存储、带宽和清洗成本会同时下降。这比「再买一台更快的 NAS」更接近问题根因。</div>
+
+  <h3>现有方案为什么不够</h3>
+  <table>
+    <thead><tr><th>方案</th><th>会话感知</th><th>质量门禁</th><th>边缘减量</th><th>交付调度</th><th>开源硬件</th></tr></thead>
+    <tbody>
+      <tr><td>NAS + SSD 缓存</td><td>否</td><td>否</td><td>否</td><td>弱</td><td>部分</td></tr>
+      <tr><td>bcache / dm-cache / ZFS L2ARC</td><td>否</td><td>否</td><td>否</td><td>否</td><td>否</td></tr>
+      <tr><td>云对象存储 + 上传工具</td><td>否</td><td>否</td><td>弱</td><td>弱</td><td>否</td></tr>
+      <tr><td><b>具身数据驿</b></td><td><b>是</b></td><td><b>是</b></td><td><b>是</b></td><td><b>是</b></td><td><b>是</b></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ 3. SOLUTION ============ -->
+<section class="page-break">
+  <div class="kicker">03 · 方案</div>
+  <h2>五层能力，把数据治理前移到采集现场</h2>
+
+  <h3>1. 会话感知写入</h3>
+  <p>录制会话在 NVMe 上以追加方式暂存，会话封存（<code>_COMPLETE</code> + manifest）后才进入分层；未封存的会话不参与交付。MVP 用 UPS + checksum + 重试保证可恢复；路线图加入掉电刷盘与超级电容。</p>
+
+  <h3>2. 边缘质量门禁</h3>
+  <p>对每个 episode 抽样帧，计算 Laplacian 方差（模糊）、灰度均值（过暗/过曝）、黑帧比例、连续帧差异（重复）。输出 0-100 分与 <code>pass / review / quarantine</code>；<b>只隔离，不删除</b>，隔离数据仍可在冷层追溯。</p>
+
+  <h3>3. 训练格式减量</h3>
+  <p>图像序列/视频统一转 H.264 MP4；状态保留 JSONL/Parquet；生成含 sha256 的 manifest。目标不是「无损归档」，而是「训练就绪包」：更少的字节、更明确的 episode 边界、可直接按 episode 随机读。</p>
+
+  <h3>4. 热冷分层</h3>
+  <p>热层 NVMe 保存最近会话、待交付与优先 episode；冷层 HDD 保存已交付历史数据；SQLite 常驻元数据。训练端按 episode 取用，不需要整包下载。</p>
+
+  <h3>5. 交付调度</h3>
+  <p>本地目录或 S3/MinIO；失败重试；记录每次交付的 bytes、attempts、开始/完成时间，计算「数据到训练」延迟。路线图：带宽限速、优先级队列、断点续传、物理数据胶囊。</p>
+
+  <h3>架构</h3>
+  <pre><code>incoming/session_x/episode_y/
+  camera_*/frames/*.png | camera_*/video.mp4
+  state.jsonl
+  meta.json
+        │
+        ▼
+  scanner ──► SQLite (sessions / episodes / events)
+        │
+        ▼
+  quality ──► quality_json + pass / review / quarantine
+        │
+        ▼
+  transcode ──► hot/session/episode/{camera}.mp4 + state.jsonl + manifest.json
+        │
+        ▼
+  tiering ──► cold/session/episode/...
+        │
+        ▼
+  delivery ──► local / S3 (retry, checkpoint, latency)</code></pre>
+
+  <div class="note"><b>设计原则：</b>质量门禁只做「标记与隔离」，不做自动删除；所有交付包带 sha256；所有阶段幂等，可重跑；任何失败都留下事件日志。</div>
+</section>
+
+<!-- ============ 4. HARDWARE ============ -->
+<section class="page-break">
+  <div class="kicker">04 · 硬件设计</div>
+  <h2>一台 &lt; 5000 元的可复现边缘数据站</h2>
+
+  <p>硬件不是「新介质」，而是为具身数据工作负载设计的<b>软硬一体整机</b>：NVMe 缓冲、HDD 容量、UPS 掉电保护、ESP32 健康监控、开源外壳与接线。</p>
+
+  <table>
+    <thead><tr><th>部件</th><th>规格</th><th class="num">数量</th><th class="num">参考价（元）</th><th>作用</th></tr></thead>
+    <tbody>
+      <tr><td>x86 小主机</td><td>N100/i5，M.2 NVMe + SATA/USB3</td><td class="num">1</td><td class="num">已有</td><td>计算与 I/O</td></tr>
+      <tr><td>NVMe SSD</td><td>2 TB TLC，PCIe 3.0/4.0</td><td class="num">1</td><td class="num">700</td><td>写入缓冲 / 热层</td></tr>
+      <tr><td>HDD</td><td>16 TB CMR，SATA</td><td class="num">1</td><td class="num">2500</td><td>冷层</td></tr>
+      <tr><td>HDD 连接</td><td>SATA 线/电源或 USB3 硬盘盒</td><td class="num">1</td><td class="num">100</td><td>容量扩展</td></tr>
+      <tr><td>UPS</td><td>600 VA 后备式</td><td class="num">1</td><td class="num">300</td><td>掉电保护</td></tr>
+      <tr><td>ESP32-S3</td><td>NTC + PWM 风扇 + OLED（可选）</td><td class="num">1</td><td class="num">150</td><td>温度/风扇健康监控</td></tr>
+      <tr><td>外壳</td><td>3D 打印/亚克力 + 铜柱</td><td class="num">1</td><td class="num">300</td><td>固定/风道</td></tr>
+      <tr><td>线材/散热</td><td>SATA 电源、风扇、导热垫</td><td class="num">1</td><td class="num">100</td><td>装配</td></tr>
+      <tr><td colspan="3"><b>合计（不含已有主机/硬盘）</b></td><td class="num"><b>≈ 4150</b></td><td></td></tr>
+    </tbody>
+  </table>
+
+  <div class="grid-2">
+    <div class="card">
+      <h4>开源硬件交付物</h4>
+      <ul>
+        <li>BOM（价格、规格、采购优先级）</li>
+        <li>接线图（ESP32、风扇、NTC、UPS）</li>
+        <li>OpenSCAD 参数化托盘（STL/STEP 可导出）</li>
+        <li>ESP32-S3 固件（WiFi + HTTP telemetry）</li>
+        <li>装配步骤与安全边界</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>可复现性</h4>
+      <ul>
+        <li>控制程序/固件源码开放</li>
+        <li>结构件 3D 模型与图纸开放</li>
+        <li>BOM 与装配说明开放</li>
+        <li>目标：他人可以照着装出同类设备</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="small">说明：MVP 使用现成小主机与 OpenSCAD 参考托盘，尚未做量产级 PCB；自定义载板（电源/风扇/超级电容）在 v0.3 路线图中。所有安全相关设计以「不涉及市电改装」为边界。</p>
+</section>
+
+<!-- ============ 5. DIFFERENTIATION ============ -->
+<section class="page-break">
+  <div class="kicker">05 · 技术差异</div>
+  <h2>为什么不是「SSD + HDD 的简单组合」</h2>
+
+  <p>「SSD 做缓存、HDD 做容量」是成熟技术：bcache、dm-cache、ZFS L2ARC、LVM cache 都能做。我们的差异不在介质，而在<b>面向具身数据工作负载的路径设计</b>：</p>
+
+  <table>
+    <thead><tr><th>维度</th><th>通用缓存/分层</th><th>具身数据驿</th></tr></thead>
+    <tbody>
+      <tr><td>写入单位</td><td>块/页热度</td><td>录制会话/episode；未封存不迁移</td></tr>
+      <tr><td>顺序大写入</td><td>bcache 默认绕过顺序 IO</td><td>专门吸收大块顺序写，封存后再分层</td></tr>
+      <tr><td>质量</td><td>不感知内容</td><td>模糊/曝光/重复/黑帧门禁；只隔离不删除</td></tr>
+      <tr><td>交付</td><td>无 episode 概念</td><td>按 episode 优先级交付，记录数据到训练延迟</td></tr>
+      <tr><td>硬件</td><td>通用服务器/NAS</td><td>开源 BOM/接线/外壳/固件，可复现整机</td></tr>
+    </tbody>
+  </table>
+
+  <h3>关键技术点</h3>
+  <ul>
+    <li><b>会话状态机：</b>discovered → quality_pass/review/quarantine → packaged → delivered → cold；每一步幂等、可重跑。</li>
+    <li><b>质量评分：</b>Laplacian 方差、灰度均值、黑帧比例、连续帧差异；阈值可配置，便于按场景校准。</li>
+    <li><b>交付证据链：</b>manifest 记录每个文件的 sha256、原始/压缩字节、质量报告；交付记录记录 attempts 与延迟。</li>
+    <li><b>不删除原则：</b>隔离数据仍保留在原始/冷层，人工可复查；避免现场误删唯一素材。</li>
+    <li><b>可观测：</b>dashboard 一屏展示质量分布、热冷层、交付队列与 benchmark。</li>
+  </ul>
+
+  <div class="warn"><b>边界与诚实声明：</b>当前 MVP 不做任务成功判定、不做自动标注、不做多节点集群；质量门禁是图像质量指标，不是「数据价值」的最终判断。真实数据的减量比例会低于合成数据。</div>
+</section>
+
+<!-- ============ 6. BENCHMARK ============ -->
+<section class="page-break">
+  <div class="kicker">06 · 证据</div>
+  <h2>Benchmark：10 Mbps 上行下端到端 13.53×</h2>
+
+  <p>测试使用合成多相机数据（2 sessions / 14 episodes / 2 cameras / 30 frames / 320×240 / 153.3 MB），注入模糊、过暗、重复、黑帧、过曝缺陷。基线为「全存全传」，管线为「质检 + 减量 + 分层 + 本地交付」。</p>
+
+  <table>
+    <thead><tr><th>指标</th><th class="num">基线：全存全传</th><th class="num">具身数据驿</th></tr></thead>
+    <tbody>
+      <tr><td>原始数据</td><td class="num">153.3 MB</td><td class="num">153.3 MB</td></tr>
+      <tr><td>交付数据</td><td class="num">153.3 MB</td><td class="num">0.75 MB</td></tr>
+      <tr><td>质量门禁剔除</td><td class="num">0</td><td class="num">6 / 14 episodes</td></tr>
+      <tr><td>本地处理时间</td><td class="num">1.22 s（复制）</td><td class="num">8.56 s</td></tr>
+      <tr><td>建模上传时间（10 Mbps）</td><td class="num">122.67 s</td><td class="num">0.60 s</td></tr>
+      <tr><td>数据到训练总时间</td><td class="num">123.89 s</td><td class="num"><b>9.16 s</b></td></tr>
+      <tr><td>加速比</td><td class="num">1.00×</td><td class="num"><b>13.53×</b></td></tr>
+    </tbody>
+  </table>
+
+  <div class="grid-3">
+    <div class="stat"><strong>29.4%</strong><span>质量门禁剔除比例（原始字节）</span></div>
+    <div class="stat"><strong>99.3%</strong><span>编码减量（合成 PNG 上界）</span></div>
+    <div class="stat"><strong>99.5%</strong><span>总减量（交付字节 / 原始字节）</span></div>
+  </div>
+
+  <div class="warn"><b>不要把 99.3% 当成真实世界数字。</b>合成数据把原始帧存为 PNG，H.264 对静态合成纹理压缩率极高；真实相机噪声/运动画面会显著降低编码减量。100 Mbps 下处理时间占主导，加速比收敛到约 1.5×。下一步用真实 1080p 多相机会话复测。</div>
+
+  <h3>复现</h3>
+  <pre><code>uv venv --python 3.12
+uv pip install -e ".[dev]"
+python scripts/benchmark.py --clean --sessions 2 --episodes 7 \
+  --cameras 2 --frames 30 --uplink-mbps 10</code></pre>
+
+  <p class="small">完整方法、局限与原始 JSON 见仓库 <code>docs/BENCHMARKS.md</code> 与 <code>data/benchmark/benchmark_results.json</code>（运行后生成）。</p>
+</section>
+
+<!-- ============ 7. OPEN SOURCE ============ -->
+<section class="page-break">
+  <div class="kicker">07 · 开源治理</div>
+  <h2>不是「代码丢上 GitHub」，而是可复现、可协作</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <h4>许可证</h4>
+      <ul>
+        <li>软件：Apache-2.0</li>
+        <li>硬件设计：CERN-OHL-S-2.0</li>
+        <li>文档：CC BY 4.0</li>
+        <li>第三方依赖与 FFmpeg/MinIO 许可说明：<code>NOTICE</code></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>协作机制</h4>
+      <ul>
+        <li>CONTRIBUTING：开发、测试、DCO、硬件贡献规范</li>
+        <li>GOVERNANCE：维护者、lazy consensus、发布流程</li>
+        <li>SECURITY：私密报告、威胁模型、加固清单</li>
+        <li>ROADMAP：v0.1 → v0.2 真实数据 → v0.3 多节点/数据胶囊</li>
+        <li>GitHub Actions CI：编译 + pytest + FFmpeg</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>仓库结构</h3>
+  <pre><code>edr/                 核心管线（scanner / quality / transcode / tiering / delivery / api）
+scripts/             合成采集器、benchmark、bootstrap
+hardware/            BOM、接线、OpenSCAD 外壳、ESP32 固件
+docs/                架构、部署、benchmark、参赛说明、视频脚本
+tests/               8 个 pytest（质量门禁、管线、API）
+.github/             CI、issue/PR 模板</code></pre>
+
+  <h3>可复现路径</h3>
+  <ol>
+    <li>按 BOM 装好小主机 + NVMe + HDD + UPS；按接线图接 ESP32。</li>
+    <li>运行 <code>scripts/bootstrap.sh</code> 或手动安装 Python/FFmpeg。</li>
+    <li>用 <code>synth_recorder.py</code> 生成缺陷数据，或接入真实 rosbag2/MCAP。</li>
+    <li>运行 <code>edr pipeline</code>，打开 dashboard 查看质量、分层与交付。</li>
+    <li>运行 <code>benchmark.py</code> 复现数字。</li>
+  </ol>
+
+  <h3>测试与质量</h3>
+  <ul>
+    <li>8 个 pytest：质量门禁 6 个、管线 1 个、API 1 个；CI 在 Ubuntu + Python 3.12 + FFmpeg 下运行。</li>
+    <li>质量门禁测试覆盖 sharp/blur/dark/black/duplicate/bright 六类输入。</li>
+    <li>交付路径支持 local 与 S3（MinIO）；S3 凭证通过环境变量注入。</li>
+  </ul>
+</section>
+
+<!-- ============ 8. LONG TERM ============ -->
+<section class="page-break">
+  <div class="kicker">08 · 长期发展</div>
+  <h2>从一台边缘节点，到具身数据的基础设施</h2>
+
+  <table>
+    <thead><tr><th>阶段</th><th>时间</th><th>目标</th></tr></thead>
+    <tbody>
+      <tr><td>v0.1 Competition MVP</td><td>2026-10</td><td>单机、合成数据、本地/S3 交付、开源治理齐全</td></tr>
+      <tr><td>v0.2 Real-data pilot</td><td>2026-11 → 12</td><td>真实 rosbag2/MCAP、LeRobot exporter、掉电恢复、ESP32 健康监控</td></tr>
+      <tr><td>v0.3 Multi-node &amp; cartridge</td><td>2027 Q1</td><td>多节点索引、交付调度、可热插拔数据胶囊、10GbE</td></tr>
+      <tr><td>v1.0 Production</td><td>2027 Q2</td><td>生产安装包、升级/回滚、监控告警、商业支持</td></tr>
+    </tbody>
+  </table>
+
+  <h3>目标客户</h3>
+  <ul>
+    <li>具身智能数据采集中心/训练场（70+ 已启用，40+ 在建/规划）。</li>
+    <li>机器人本体公司与具身大模型团队（自建采集场地）。</li>
+    <li>第三方数据服务商（采集、清洗、交付一体化）。</li>
+    <li>高校实验室与科研机构（预算敏感、需要可复现）。</li>
+  </ul>
+
+  <h3>商业模式</h3>
+  <ul>
+    <li>开源核心 + 硬件整机/套件 + 部署与支持服务。</li>
+    <li>与数据采集中心按站点/节点合作，先做 1-2 个 pilot，再复制。</li>
+    <li>与 LeRobot / MCAP / ROS 2 生态兼容，降低集成成本。</li>
+  </ul>
+
+  <div class="note"><b>可持续性：</b>项目解决的是采集现场的刚性成本问题（存储、带宽、清洗人力），不是一次性 Demo。开源硬件降低信任门槛，整机与服务形成收入；路线图按真实 pilot 反馈迭代。</div>
+</section>
+
+<!-- ============ 9. TEAM ============ -->
+<section class="page-break">
+  <div class="kicker">09 · 团队</div>
+  <h2>团队与分工</h2>
+
+  <table>
+    <thead><tr><th>角色</th><th>姓名</th><th>背景</th><th>分工</th></tr></thead>
+    <tbody>
+      <tr><td>项目负责人</td><td>【待填】</td><td>【待填】</td><td>整体方案、软件管线、benchmark、参赛材料</td></tr>
+      <tr><td>硬件/结构</td><td>【待填】</td><td>【待填】</td><td>BOM、接线、外壳、ESP32 固件、整机装配</td></tr>
+      <tr><td>数据/算法</td><td>【待填】</td><td>【待填】</td><td>质量门禁阈值、真实数据 pilot、LeRobot 格式</td></tr>
+      <tr><td>视频/文档</td><td>【待填】</td><td>【待填】</td><td>演示视频、PDF、README/治理文档</td></tr>
+    </tbody>
+  </table>
+
+  <p class="small">当前为个人主导的 MVP，团队 ≤8 人；赛后计划招募 2-3 名 co-maintainer（嵌入式/数据工程/文档社区）。</p>
+
+  <h3>赛事期间投入</h3>
+  <ul>
+    <li>2026-10-20 → 10-31：完成 MVP、真实数据/硬件验证、PDF 与演示视频。</li>
+    <li>2026-11-01 → 11-13：入围后准备线下路演与实物演示。</li>
+    <li>赛后：按 ROADMAP 继续维护，优先做真实数据 pilot 与 LeRobot exporter。</li>
+  </ul>
+
+  <h3>联系</h3>
+  <p>【待填：负责人邮箱 / 电话 / GitHub】<br>会务组：bjoscc@oschina.cn</p>
+</section>
+
+<!-- ============ 10. APPENDIX ============ -->
+<section class="page-break">
+  <div class="kicker">10 · 附录</div>
+  <h2>赛事映射与参考</h2>
+
+  <h3>赛道二要求对照</h3>
+  <table>
+    <thead><tr><th>要求</th><th>我们的交付</th></tr></thead>
+    <tbody>
+      <tr><td>以硬件或软硬一体为核心交付</td><td>边缘数据站整机：小主机 + NVMe + HDD + UPS + ESP32；软件是整机的一部分</td></tr>
+      <tr><td>固件/控制程序源码</td><td>ESP32-S3 固件、Python 管线、benchmark 脚本</td></tr>
+      <tr><td>结构件 3D 模型/图纸</td><td>OpenSCAD 参数化托盘，可导出 STL/STEP</td></tr>
+      <tr><td>BOM/装配说明</td><td>BOM、接线图、装配顺序、安全边界</td></tr>
+      <tr><td>可供他人复现</td><td>bootstrap、合成数据、测试、benchmark、部署手册</td></tr>
+    </tbody>
+  </table>
+
+  <h3>评分维度对照</h3>
+  <table>
+    <thead><tr><th>维度</th><th>权重</th><th>我们的证据</th></tr></thead>
+    <tbody>
+      <tr><td>技术创新</td><td>30%</td><td>会话感知写入、质量门禁、交付感知分层；与 bcache/NAS/云对照</td></tr>
+      <tr><td>场景落地</td><td>30%</td><td>70+ 训练场真实痛点；可运行管线；benchmark；成本模型</td></tr>
+      <tr><td>开源治理</td><td>20%</td><td>Apache-2.0 + CERN-OHL-S；CI；CONTRIBUTING/SECURITY/GOVERNANCE；BOM/外壳/固件</td></tr>
+      <tr><td>长期发展</td><td>20%</td><td>ROADMAP；pilot 计划；开源核心 + 硬件/服务；生态兼容</td></tr>
+    </tbody>
+  </table>
+
+  <h3>参考资料</h3>
+  <ol class="refs">
+    <li>第四届开放原子大赛·2026 官网：https://www.oschina.net/oa2026/</li>
+    <li>具身智能数据产业爆发，数据资产迎来价值重估（2026-10-19）：https://finance.sina.com.cn/jjxw/2026-10-19/doc-inivtchu0786775.shtml</li>
+    <li>AgiBotWorld-Alpha（约 9.66 TB）：https://huggingface.co/datasets/agibot-world/AgiBotWorld-Alpha</li>
+    <li>NVIDIA Open Physical AI Dataset（15 TB）：https://blogs.nvidia.com/blog/open-physical-ai-dataset/</li>
+    <li>从具身智能到桌面小装置：硬件赛道范围：https://m.sohu.com/a/1078976540_827544/</li>
+    <li>Intel Optane 停产始末（2022）：https://news.qq.com/rain/a/20260816A04X3F00</li>
+    <li>bcache 机制与顺序 IO 行为：https://wiki.ubuntu.com/ServerTeam/Bcache</li>
+    <li>原始素材约三成可用：https://news.pedaily.cn/202609/569219.shtml</li>
+    <li>ROS 2 录制数据量参考：https://www.apex.ai/post/improvements-in-data-recording-path</li>
+  </ol>
+
+  <div class="footer-note">本 PDF 为 2026-10-20 草稿；主体、团队、视频链接与真实数据 pilot 结果待补。所有 benchmark 数字均可在仓库中复现。</div>
+</section>
+
+</body>
+</html>

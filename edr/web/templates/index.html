@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>具身数据驿 · Embodied Data Relay</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="mark" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div>
+          <h1>具身数据驿</h1>
+          <p>Embodied Data Relay · 边缘数据减量与交付</p>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <span class="pill" id="node-status"><i></i> EDGE NODE ONLINE</span>
+        <span class="clock" id="clock"></span>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div>
+        <p class="kicker">TRACK 02 · OPEN-SOURCE SMART HARDWARE</p>
+        <h2>把「原始 TB」变成「可训练小时」。</h2>
+        <p class="lede">会话感知写入、边缘质量门禁、H.264 减量、NVMe/HDD 分层、可恢复交付。数据在采集现场就变少、变可用、变得可交付。</p>
+      </div>
+      <div class="hero-meta">
+        <div><span>截止</span><strong>2026-10-31</strong></div>
+        <div><span>赛道</span><strong>开源智能硬件</strong></div>
+        <div><span>许可</span><strong>Apache-2.0</strong></div>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="关键指标">
+      <article class="card metric">
+        <span class="label">Sessions</span>
+        <strong id="stat-sessions">0</strong>
+        <small>采集会话</small>
+      </article>
+      <article class="card metric">
+        <span class="label">Episodes</span>
+        <strong id="stat-episodes">0</strong>
+        <small>训练片段</small>
+      </article>
+      <article class="card metric">
+        <span class="label">Raw</span>
+        <strong id="stat-raw">0 B</strong>
+        <small>原始数据</small>
+      </article>
+      <article class="card metric">
+        <span class="label">Compact</span>
+        <strong id="stat-compact">0 B</strong>
+        <small>训练就绪</small>
+      </article>
+      <article class="card metric accent">
+        <span class="label">Reduction</span>
+        <strong id="stat-reduction">0%</strong>
+        <small>边缘减量比</small>
+      </article>
+      <article class="card metric">
+        <span class="label">Delivered</span>
+        <strong id="stat-delivered">0 B</strong>
+        <small>已交付</small>
+      </article>
+      <article class="card metric">
+        <span class="label">Data → Training</span>
+        <strong id="stat-latency">0 h</strong>
+        <small>平均交付延迟</small>
+      </article>
+    </section>
+
+    <main class="grid">
+      <section class="card wide">
+        <div class="card-head">
+          <h3>Pipeline</h3>
+          <span class="muted" id="pipeline-hint">质量门禁 → 转码减量 → 分层 → 交付</span>
+        </div>
+
+        <div class="split">
+          <div>
+            <h4>Quality gate</h4>
+            <div class="bar-row"><span>Pass</span><div class="bar"><i id="q-pass" class="ok"></i></div><b id="q-pass-n">0</b></div>
+            <div class="bar-row"><span>Review</span><div class="bar"><i id="q-review" class="warn"></i></div><b id="q-review-n">0</b></div>
+            <div class="bar-row"><span>Quarantine</span><div class="bar"><i id="q-quarantine" class="bad"></i></div><b id="q-quarantine-n">0</b></div>
+          </div>
+          <div>
+            <h4>Storage tiers</h4>
+            <div class="bar-row"><span>Hot NVMe</span><div class="bar"><i id="t-hot" class="ok"></i></div><b id="t-hot-n">0</b></div>
+            <div class="bar-row"><span>Cold HDD</span><div class="bar"><i id="t-cold" class="cool"></i></div><b id="t-cold-n">0</b></div>
+            <div class="bar-row"><span>Incoming</span><div class="bar"><i id="t-incoming" class="warn"></i></div><b id="t-incoming-n">0</b></div>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Session</th>
+                <th>Robot / Site</th>
+                <th>Eps</th>
+                <th>Raw</th>
+                <th>Compact</th>
+                <th>Quality</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="sessions-body">
+              <tr><td colspan="7" class="empty">等待采集会话…</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="stages" aria-label="Pipeline stages">
+          <div class="stage"><span>01 · Ingest</span><strong id="stage-ingest">0</strong><small>sessions</small></div>
+          <div class="stage"><span>02 · Quality</span><strong id="stage-quality">0 / 0 / 0</strong><small>pass / review / quarantine</small></div>
+          <div class="stage"><span>03 · Compact</span><strong id="stage-compact">0 B</strong><small>training-ready</small></div>
+          <div class="stage"><span>04 · Tier</span><strong id="stage-tier">0 / 0</strong><small>hot / cold</small></div>
+          <div class="stage"><span>05 · Deliver</span><strong id="stage-deliver">0 B</strong><small>delivered</small></div>
+        </div>
+      </section>
+
+      <aside class="stack">
+        <section class="card">
+          <div class="card-head"><h3>Node telemetry</h3><span class="muted">host + ESP32</span></div>
+          <div class="bar-row"><span>CPU</span><div class="bar"><i id="cpu-bar" class="ok"></i></div><b id="cpu-n">0%</b></div>
+          <div class="bar-row"><span>RAM</span><div class="bar"><i id="ram-bar" class="cool"></i></div><b id="ram-n">0%</b></div>
+          <div class="bar-row"><span>Disk</span><div class="bar"><i id="disk-bar" class="warn"></i></div><b id="disk-n">0%</b></div>
+          <div class="telemetry-grid">
+            <div><span>Device temp</span><strong id="device-temp">—</strong></div>
+            <div><span>Fan</span><strong id="device-fan">—</strong></div>
+            <div><span>Input power</span><strong id="device-power">—</strong></div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card-head"><h3>Delivery</h3><span class="muted">S3 / local</span></div>
+          <div class="delivery-stats">
+            <div><span>Delivered</span><strong id="delivery-bytes">0 B</strong></div>
+            <div><span>Avg latency</span><strong id="delivery-latency">0 h</strong></div>
+          </div>
+          <p class="muted small" id="delivery-note">按 episode 优先级交付；失败自动重试。</p>
+        </section>
+
+        <section class="card">
+          <div class="card-head"><h3>Recent events</h3><span class="live"><i></i> LIVE</span></div>
+          <ul class="events" id="events-list"><li class="empty">暂无事件</li></ul>
+        </section>
+
+        <section class="card" id="benchmark-card">
+          <div class="card-head"><h3>Benchmark</h3><span class="muted">latest run</span></div>
+          <div id="benchmark-body" class="benchmark-body">
+            <p class="muted small">运行 <code>python scripts/benchmark.py</code> 生成对比数据。</p>
+          </div>
+        </section>
+      </aside>
+    </main>
+
+    <footer>
+      <span>具身数据驿 · Embodied Data Relay</span>
+      <span>软件 Apache-2.0 · 硬件 CERN-OHL-S-2.0 · 第四届开放原子大赛 2026</span>
+    </footer>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>

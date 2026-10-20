@@ -1,0 +1,49 @@
+paths:
+  incoming: data/incoming
+  hot: data/hot
+  cold: data/cold
+  quarantine: data/quarantine
+  db: data/edr.db
+  logs: data/logs
+
+scanner:
+  settle_seconds: 2
+  require_complete_marker: true
+
+quality:
+  sample_frames: 12
+  blur_threshold: 60.0
+  dark_threshold: 25.0
+  bright_threshold: 220.0
+  black_frame_threshold: 0.3
+  duplicate_threshold: 0.5
+  review_score: 70
+  quarantine_score: 50
+
+transcode:
+  ffmpeg: ffmpeg
+  fps: 30
+  crf: 23
+  preset: veryfast
+  video_codec: libx264
+
+tiering:
+  hot_sessions: 3
+  auto_tier: true
+
+delivery:
+  enabled: true
+  target: local
+  local_dir: data/delivered
+  endpoint: http://127.0.0.1:9000
+  access_key: minioadmin
+  secret_key: minioadmin
+  bucket: edr-delivery
+  region: us-east-1
+  prefix: embodied
+  max_attempts: 3
+  bandwidth_limit_mbps: 0
+
+server:
+  host: 127.0.0.1
+  port: 8080

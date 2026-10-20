@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+.ruff_cache/
+
+# Project data
+data/
+*.db
+*.db-journal
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+
+# Firmware secrets / PlatformIO
+hardware/firmware/include/secrets.h
+.pio/
+
+# Build
+dist/
+build/

@@ -1,0 +1,48 @@
+Embodied Data Relay (具身数据驿)
+Copyright (c) 2026 Embodied Data Relay contributors
+
+This product includes software developed by the Embodied Data Relay project.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this software except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+Hardware design files under hardware/ are licensed under CERN-OHL-S-2.0;
+see LICENSE-HARDWARE.
+
+Third-party runtime dependencies (direct):
+- FastAPI — MIT
+- Uvicorn — BSD-3-Clause
+- Jinja2 — BSD-3-Clause
+- Watchdog — Apache-2.0
+- OpenCV (opencv-python-headless) — Apache-2.0 (bundled third-party notices in the wheel)
+- NumPy — BSD-3-Clause
+- Pillow — HPND
+- boto3 / botocore — Apache-2.0
+- PyYAML — MIT
+- psutil — BSD-3-Clause
+- python-multipart — Apache-2.0
+
+Development-only dependencies:
+- pytest — MIT
+- httpx — BSD-3-Clause
+
+External programs:
+- FFmpeg — the license depends on the build. This project invokes FFmpeg as an
+  external program and does not link it. Users must comply with the license of
+  their FFmpeg build (LGPL-2.1-or-later or GPL-2.0-or-later). See
+  https://ffmpeg.org/legal.html.
+- Docker / MinIO — used only for the optional local S3-compatible demo. MinIO is
+  licensed under AGPL-3.0; it is not bundled and is not required for the core
+  pipeline.
+
+Datasets and media used in benchmarks are not bundled in this repository. See
+docs/BENCHMARKS.md for source and license notes.
