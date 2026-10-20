@@ -24,9 +24,36 @@
 
 缺陷比例高于真实场景，用于验证质量门禁；真实数据的可用率需用 pilot 重新测量。
 
+## 真实数据 pilot：lerobot/pusht
+
+| 项 | 值 |
+|---|---|
+| 数据集 | `lerobot/pusht`（MIT，206 episodes / 25,650 frames / 96×96 / 10fps） |
+| 样本 | 2 episodes × 100 frames |
+| 原始 PNG 帧 | 427,173 B |
+| 压缩后（MP4 + state + manifest） | 65,785 B |
+| 编码减量 | **84.6%（6.5×）** |
+| 质量门禁 | 2/2 pass（校准后） |
+| 数据集主页 | https://huggingface.co/datasets/lerobot/pusht |
+
+复现：
+
+```bash
+# 需要 pyarrow
+uv pip install -e ".[pilot]"
+# 从 HF 镜像下载少量文件（约 10 MB），或使用你自己的 LeRobot 数据集
+python scripts/import_lerobot.py --dataset data/public/pusht --out data/real_pilot/incoming --episodes 2 --frames 100
+python -m edr.cli --config config.real.yaml pipeline --limit 20
+python -m edr.cli --config config.real.yaml report
+```
+
+**校准发现：** pusht 是白底高亮场景，平均亮度约 249；默认 `bright_threshold: 220` 会把正常帧误判为过曝。pilot 配置将阈值调到 253。这说明质量阈值必须按传感器/场景校准，不能一套阈值打天下。
+
+**局限：** 96×96、单相机、短片段；不代表 1080p 多相机真实场景。下一步用更大分辨率的公开/真实数据复测。
+
 ## 结果
 
-### 10 Mbps 上行（采集现场常见弱网）
+### 合成数据（缺陷覆盖）10 Mbps 上行（采集现场常见弱网）
 
 | 指标 | 基线：全存全传 | 具身数据驿 |
 |---|---:|---:|

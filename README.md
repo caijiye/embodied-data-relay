@@ -51,7 +51,9 @@
 |---|---:|---:|---:|
 | 10 Mbps | 123.9 s | 9.2 s | **13.53×** |
 
-数据：2 sessions / 14 episodes / 2 cameras / 153.3 MB，注入缺陷。质量门禁剔除 29.4%；编码减量 99.3%（合成 PNG 上界，真实数据会更低）。100 Mbps 下处理时间占主导，加速比收敛到约 1.5×；复现与局限见 [docs/BENCHMARKS.md](docs/BENCHMARKS.md)。
+数据：2 sessions / 14 episodes / 2 cameras / 153.3 MB，注入缺陷。质量门禁剔除 29.4%；编码减量 99.3%（合成 PNG 上界，真实数据会更低）。100 Mbps 下处理时间占主导，加速比收敛到约 1.5×。
+
+真实数据 pilot：`lerobot/pusht`（MIT）2 episodes × 100 frames，原始 427 KB → 压缩 66 KB，**84.6%（6.5×）**；质量门禁 2/2 pass（阈值按白底场景校准）。复现与局限见 [docs/BENCHMARKS.md](docs/BENCHMARKS.md)。
 
 ## 快速开始
 

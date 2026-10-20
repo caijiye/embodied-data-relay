@@ -1,0 +1,41 @@
+paths:
+  incoming: data/real_pilot/incoming
+  hot: data/real_pilot/hot
+  cold: data/real_pilot/cold
+  quarantine: data/real_pilot/quarantine
+  db: data/real_pilot/edr.db
+  logs: data/real_pilot/logs
+
+scanner:
+  settle_seconds: 0
+  require_complete_marker: true
+
+quality:
+  sample_frames: 12
+  blur_threshold: 20.0
+  dark_threshold: 25.0
+  bright_threshold: 253.0
+  black_frame_threshold: 0.3
+  duplicate_threshold: 0.5
+  review_score: 70.0
+  quarantine_score: 50.0
+
+transcode:
+  ffmpeg: ffmpeg
+  fps: 10
+  crf: 23
+  preset: veryfast
+  video_codec: libx264
+
+tiering:
+  hot_sessions: 1
+  auto_tier: true
+
+delivery:
+  enabled: true
+  target: local
+  local_dir: data/real_pilot/delivered
+
+server:
+  host: 127.0.0.1
+  port: 8081

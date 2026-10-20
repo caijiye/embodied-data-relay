@@ -96,13 +96,13 @@
       <h1>具身数据驿</h1>
       <div class="en">EMBODIED DATA RELAY</div>
       <div class="tagline">把「原始 TB」变成「可训练小时」：<br>采集现场的数据减量、分层与交付加速一体机。</div>
-      <div class="draft">DRAFT · 2026-10-20 · 待补：申报主体 / 团队成员 / 演示视频链接</div>
+      <div class="draft">DRAFT · 2026-10-20 · 待补：学校名称 / 团队成员 / 演示视频链接</div>
     </div>
   </div>
   <div>
     <div class="meta">
       <div><span>参赛赛道</span>开源智能硬件解决方案</div>
-      <div><span>申报主体</span>【待填：企业 / 高校 / 科研机构 / 开源社区 / 学生团队 / 联合申报】</div>
+      <div><span>申报主体</span>高校（【待填：学校名称】）</div>
       <div><span>项目负责人</span>【待填】</div>
       <div><span>团队人数</span>【待填】</div>
       <div><span>代码仓库</span>【待填：公开仓库链接】</div>
@@ -120,8 +120,8 @@
 
   <div class="grid-3" style="margin-top: 12px;">
     <div class="stat"><strong>13.53×</strong><span>10 Mbps 上行下端到端加速<br>（123.9 s → 9.2 s，合成数据）</span></div>
-    <div class="stat"><strong>29.4%</strong><span>质量门禁剔除的原始字节<br>（模糊/过暗/重复/黑帧/过曝）</span></div>
-    <div class="stat"><strong>99.3%</strong><span>可用片段编码减量<br>（合成 PNG 上界；真实数据更低）</span></div>
+    <div class="stat"><strong>29.4%</strong><span>质量门禁剔除的原始字节<br>（合成缺陷数据：模糊/过暗/重复/黑帧/过曝）</span></div>
+    <div class="stat"><strong>84.6%</strong><span>真实 LeRobot 样本编码减量<br>（427 KB → 66 KB，6.5×）</span></div>
   </div>
 
   <div class="flow" style="margin-top: 14px;">
@@ -329,12 +329,26 @@
   </table>
 
   <div class="grid-3">
-    <div class="stat"><strong>29.4%</strong><span>质量门禁剔除比例（原始字节）</span></div>
+    <div class="stat"><strong>29.4%</strong><span>质量门禁剔除比例（合成缺陷数据）</span></div>
     <div class="stat"><strong>99.3%</strong><span>编码减量（合成 PNG 上界）</span></div>
-    <div class="stat"><strong>99.5%</strong><span>总减量（交付字节 / 原始字节）</span></div>
+    <div class="stat"><strong>99.5%</strong><span>总减量（合成数据）</span></div>
   </div>
 
-  <div class="warn"><b>不要把 99.3% 当成真实世界数字。</b>合成数据把原始帧存为 PNG，H.264 对静态合成纹理压缩率极高；真实相机噪声/运动画面会显著降低编码减量。100 Mbps 下处理时间占主导，加速比收敛到约 1.5×。下一步用真实 1080p 多相机会话复测。</div>
+  <h3>真实数据 pilot：lerobot/pusht</h3>
+  <table>
+    <thead><tr><th>项</th><th class="num">值</th></tr></thead>
+    <tbody>
+      <tr><td>数据集</td><td class="num">lerobot/pusht（MIT，206 episodes / 96×96 / 10fps）</td></tr>
+      <tr><td>样本</td><td class="num">2 episodes × 100 frames</td></tr>
+      <tr><td>原始 PNG 帧</td><td class="num">427,173 B</td></tr>
+      <tr><td>压缩后（MP4 + state + manifest）</td><td class="num">65,785 B</td></tr>
+      <tr><td>编码减量</td><td class="num"><b>84.6%（6.5×）</b></td></tr>
+      <tr><td>质量门禁</td><td class="num">2/2 pass（阈值校准后）</td></tr>
+    </tbody>
+  </table>
+  <p class="small">校准发现：pusht 是白底高亮场景，平均亮度约 249；默认 <code>bright_threshold: 220</code> 会把正常帧误判为过曝，pilot 配置调到 253。质量阈值必须按传感器/场景校准。该样本仅 96×96、单相机；1080p 多相机 pilot 是下一步。</p>
+
+  <div class="warn"><b>不要把 99.3% 当成真实世界数字。</b>合成数据把原始帧存为 PNG，H.264 对静态合成纹理压缩率极高；真实相机噪声/运动画面会显著降低编码减量。真实 pilot 的 84.6% 更可信，但仍受 96×96 小分辨率限制。100 Mbps 下处理时间占主导，加速比收敛到约 1.5×。下一步用真实 1080p 多相机会话复测。</div>
 
   <h3>复现</h3>
   <pre><code>uv venv --python 3.12
@@ -342,7 +356,6 @@ uv pip install -e ".[dev]"
 python scripts/benchmark.py --clean --sessions 2 --episodes 7 \
   --cameras 2 --frames 30 --uplink-mbps 10</code></pre>
 
-  <p class="small">完整方法、局限与原始 JSON 见仓库 <code>docs/BENCHMARKS.md</code> 与 <code>data/benchmark/benchmark_results.json</code>（运行后生成）。</p>
 </section>
 
 <!-- ============ 7. OPEN SOURCE ============ -->
