@@ -324,9 +324,9 @@ def slide_benchmark():
     fig = load_rgb(FIG / "fig09_benchmark.png")
     paste_rounded(img, fig, (130, 450, 1660, 400), radius=8)
 
-    d.rounded_rectangle((110, 900, 1810, 980), radius=12, fill=(38, 28, 16), outline=(120, 75, 20), width=1)
-    d.rectangle((110, 900, 118, 980), fill=ORANGE)
-    d.text((146, 922), "99.3% 是合成 PNG 上界；真实 pilot 84.6% 更可信。", font=f(24, True), fill=(255, 214, 165))
+    d.rounded_rectangle((110, 382, 1810, 424), radius=10, fill=(38, 28, 16), outline=(120, 75, 20), width=1)
+    d.rectangle((110, 382, 118, 424), fill=ORANGE)
+    d.text((146, 389), "99.3% 是合成 PNG 上界；真实 pilot 84.6% 更可信。", font=f(19, True), fill=(255, 214, 165))
     img.save(OUT / "06_benchmark.png")
 
 

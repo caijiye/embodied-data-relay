@@ -4,7 +4,8 @@
 
 让具身数据在采集现场就变少、变可用、变得可交付。
 
-代码仓库：https://github.com/caijiye/embodied-data-relay
+代码仓库（Gitee）：https://gitee.com/yhy196/embodied-data-relay
+GitHub 镜像：https://github.com/caijiye/embodied-data-relay
 
 具身智能的数据采集现场正在被三件事拖住：原始数据量太大、可用率太低、上传交付太慢。具身数据驿是一台开源的边缘数据站：在采集现场完成会话级原样写入、质量门禁、训练格式压缩、热冷分层和可恢复交付，把「原始 TB」变成「可训练小时」。
 
@@ -15,9 +16,10 @@
 
 ## 演示视频与提交材料
 
-- 演示视频（2:11，1080p）：https://github.com/caijiye/embodied-data-relay/releases/download/demo-2026-10-31/demo.mp4
-- 项目介绍 PDF（17 页）：https://github.com/caijiye/embodied-data-relay/blob/master/docs/submission/EDR-proposal.pdf
-- 参赛材料说明：`docs/submission/`
+- Gitee 主仓库：https://gitee.com/yhy196/embodied-data-relay
+- GitHub 镜像：https://github.com/caijiye/embodied-data-relay
+- 演示视频（2:11，1080p，含字幕）：https://gitee.com/yhy196/embodied-data-relay/blob/master/docs/submission/demo.mp4
+- 项目介绍 PDF（17 页）：https://gitee.com/yhy196/embodied-data-relay/blob/master/docs/submission/EDR-proposal.pdf
 
 ## 问题
 

@@ -1,6 +1,7 @@
 # 演示视频（最终版）
 
-- 成片：https://github.com/caijiye/embodied-data-relay/releases/download/demo-2026-10-31/demo.mp4
+- 成片（Gitee）：https://gitee.com/yhy196/embodied-data-relay/blob/master/docs/submission/demo.mp4
+- GitHub 镜像：https://github.com/caijiye/embodied-data-relay
 - 时长：2 分 11 秒；1920×1080 / 30fps / H.264 + AAC
 - 旁白：腾讯云 TTS 402002（云大围，磁性男声），Speed 0，24k
 - 形式：9 页 PPT 式分镜；真实 dashboard 截图 + 现有图表重排，不做假实物、不夸大合成数据
