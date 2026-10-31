@@ -18,7 +18,7 @@ GitHub 镜像：https://github.com/caijiye/embodied-data-relay
 
 - Gitee 主仓库：https://gitee.com/yhy196/embodied-data-relay
 - GitHub 镜像：https://github.com/caijiye/embodied-data-relay
-- 演示视频（2:31，1080p，含同步字幕）：https://gitee.com/yhy196/embodied-data-relay/blob/master/docs/submission/demo.mp4
+- 演示视频（2:11，1080p，含同步字幕）：https://gitee.com/yhy196/embodied-data-relay/blob/master/docs/submission/demo.mp4
 - 项目介绍 PDF（17 页）：https://gitee.com/yhy196/embodied-data-relay/blob/master/docs/submission/EDR-proposal.pdf
 
 ## 问题

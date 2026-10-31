@@ -17,7 +17,7 @@ from pathlib import Path
 
 BASE = Path(r"D:\MyProject\开放原子")
 SLIDES = BASE / "data" / "video" / "slides"
-OUT = BASE / "data" / "video" / "v2"
+OUT = BASE / "data" / "video" / "v3"
 CLIP_AUDIO = OUT / "clips"
 SEG = OUT / "segments"
 for p in (OUT, CLIP_AUDIO, SEG):
@@ -27,39 +27,33 @@ VOICE = 402002
 MODEL = 1
 SR = 24000
 PRE = 0.25
-GAP = 1.0
-SCENE_GAP = 1.0
+GAP = 0.3
+SCENE_GAP = 0.3
 TAIL = 0.35
 
 # (clip id, scene, tts text, subtitle text with \N line break)
 CLIPS = [
-    ("c01", "01_cover", "具身数据驿，一套放在采集现场的边缘数据站。", "具身数据驿，\\N一套放在采集现场的边缘数据站。"),
-    ("c02", "01_cover", "它把原始 TB，变成可训练小时。", "它把原始 TB，\\N变成可训练小时。"),
-    ("c03", "02_problem", "具身数据一天就是 TB 级。", "具身数据一天就是 TB 级。"),
-    ("c04", "02_problem", "八路 1080p 原始画面，每秒约 1.5 GB；", "八路 1080p 原始画面，\\N每秒约 1.5 GB；"),
-    ("c05", "02_problem", "1 TB 走 10 Mbps，要 9 天。", "1 TB 走 10 Mbps，\\N要 9 天。"),
-    ("c06", "02_problem", "而原始素材，大约只有三成能真正用于训练。", "而原始素材，\\N大约只有三成能真正用于训练。"),
-    ("c07", "03_solution", "我们在采集现场做五件事：", "我们在采集现场做五件事："),
-    ("c08", "03_solution", "会话感知写入、质量门禁、H.264 减量、NVMe 与 HDD 分层、可恢复交付。", "会话感知写入、质量门禁、H.264 减量、\\NNVMe 与 HDD 分层、可恢复交付。"),
-    ("c09", "03_solution", "质量门禁只隔离，不删除；训练端按片段取用。", "质量门禁只隔离，不删除；\\N训练端按片段取用。"),
-    ("c10", "04_demo1", "这是实际跑出来的 dashboard。", "这是实际跑出来的 dashboard。"),
-    ("c11", "04_demo1", "原始数据 48.6 MB，训练就绪 239.7 KB，减量 99.5%。", "原始数据 48.6 MB，\\N训练就绪 239.7 KB，减量 99.5%。"),
-    ("c12", "04_demo1", "交付延迟 0.0 小时，数据到训练的时间，被压到现场。", "交付延迟 0.0 小时，\\N数据到训练的时间，被压到现场。"),
-    ("c13", "05_demo2", "质量门禁给出 2 个 pass、1 个 review、4 个 quarantine。", "质量门禁给出 2 个 pass、\\N1 个 review、4 个 quarantine。"),
-    ("c14", "05_demo2", "热层保留 3 个片段，4 个还在待处理。", "热层保留 3 个片段，\\N4 个还在待处理。"),
-    ("c15", "05_demo2", "交付队列按质量优先，失败自动重试。", "交付队列按质量优先，\\N失败自动重试。"),
-    ("c16", "06_benchmark", "10 Mbps 上行，端到端从 123.9 秒降到 9.2 秒，加速 13.53 倍。", "10 Mbps 上行，端到端从 123.9 秒\\N降到 9.2 秒，加速 13.53 倍。"),
-    ("c17", "06_benchmark", "真实开源样本，427 KB 压到 66 KB，减量 84.6%。", "真实开源样本，\\N427 KB 压到 66 KB，减量 84.6%。"),
-    ("c18", "06_benchmark", "99.3% 是合成数据上界，我们不把它当真实世界数字。", "99.3% 是合成数据上界，\\N我们不把它当真实世界数字。"),
-    ("c19", "07_hardware", "整机约 3,453 元，18 TB，折合每 TB 192 元。", "整机约 3,453 元，18 TB，\\N折合每 TB 192 元。"),
-    ("c20", "07_hardware", "USB 3.0 实测约 400 MB/s，单块 HDD 顺序 200 到 260 MB/s。", "USB 3.0 实测约 400 MB/s，\\N单块 HDD 顺序 200 到 260 MB/s。"),
-    ("c21", "07_hardware", "BOM、接线、外壳、固件全部开源。", "BOM、接线、外壳、\\N固件全部开源。"),
-    ("c22", "08_open", "软件 Apache 2.0，硬件 CERN-OHL-S，文档 CC BY 4.0。", "软件 Apache 2.0，\\N硬件 CERN-OHL-S，文档 CC BY 4.0。"),
-    ("c23", "08_open", "12 个 pytest，GitHub Actions 持续集成。", "12 个 pytest，\\NGitHub Actions 持续集成。"),
-    ("c24", "08_open", "别人可以照着 BOM，装出同一台设备。", "别人可以照着 BOM，\\N装出同一台设备。"),
-    ("c25", "09_close", "让数据在采集现场，就变少、变可用、变得可交付。", "让数据在采集现场，\\N就变少、变可用、变得可交付。"),
-    ("c26", "09_close", "具身数据驿，期待在开源社区见面。", "具身数据驿，\\N期待在开源社区见面。"),
+    ('c01', '01_cover', '具身数据驿，一套放在采集现场的边缘数据站。它把原始 T B，变成可训练小时。', '具身数据驿，一套放在采集现场的边缘数据站。', '它把原始 TB，变成可训练小时。'),
+    ('c02', '02_problem', '具身数据一天就是 T B 级。八路一零八零 P 原始画面，每秒约一点五 G B；', '具身数据一天就是 TB 级。', '八路 1080p 原始画面，每秒约 1.5 GB；'),
+    ('c03', '02_problem', '一 T B 走十兆比特每秒，要九天。而原始素材，大约只有三成能真正用于训练。', '1 TB 走 10 Mbps，要 9 天。', '而原始素材，大约只有三成能真正用于训练。'),
+    ('c04', '03_solution', '我们在采集现场做五件事：会话感知写入、质量门禁、H点二六四减量。', '我们在采集现场做五件事：会话感知写入、', '质量门禁、H.264 减量。'),
+    ('c05', '03_solution', 'N V M E 与 H D D 分层、可恢复交付。质量门禁只隔离，不删除；训练端按片段取用。', 'NVMe 与 HDD 分层、可恢复交付。', '质量门禁只隔离，不删除；训练端按片段取用。'),
+    ('c06', '04_demo1', '这是实际跑出来的 dashboard。原始数据四十八点六 M B，训练就绪二百三十九点七 K B，减量百分之九十九点五。', '这是实际跑出来的 dashboard。', '原始数据 48.6 MB，训练就绪 239.7 KB，减量 99.5%。'),
+    ('c07', '04_demo1', '交付延迟零点零小时，数据到训练的时间，被压到现场。', '交付延迟 0.0 小时，', '数据到训练的时间，被压到现场。'),
+    ('c08', '05_demo2', '质量门禁给出两个 pass、一个 review、四个 quarantine。', '质量门禁给出 2 个 pass、', '1 个 review、4 个 quarantine。'),
+    ('c09', '05_demo2', '热层保留三个片段，四个还在待处理。交付队列按质量优先，失败自动重试。', '热层保留 3 个片段，4 个还在待处理。', '交付队列按质量优先，失败自动重试。'),
+    ('c10', '06_benchmark', '十兆比特每秒上行，端到端从一百二十三点九秒降到九点二秒，加速十三点五三倍。', '10 Mbps 上行，端到端从 123.9 秒', '降到 9.2 秒，加速 13.53 倍。'),
+    ('c11', '06_benchmark', '真实开源样本，四百二十七 K B 压到六十六 K B，减量百分之八十四点六。', '真实开源样本，427 KB 压到 66 KB，减量 84.6%。', ''),
+    ('c12', '06_benchmark', '百分之九十九点三是合成数据上界，我们不把它当真实世界数字。', '99.3% 是合成数据上界，', '我们不把它当真实世界数字。'),
+    ('c13', '07_hardware', '整机约三千四百五十三元，十八 T B，折合每 T B 一百九十二元。', '整机约 3,453 元，18 TB，', '折合每 TB 192 元。'),
+    ('c14', '07_hardware', 'USB 三点零实测约四百兆字节每秒，单块 H D D 顺序两百到两百六十兆字节每秒。', 'USB 3.0 实测约 400 MB/s，', '单块 HDD 顺序 200 到 260 MB/s。'),
+    ('c15', '07_hardware', 'B O M、接线、外壳、固件全部开源。', 'BOM、接线、外壳、', '固件全部开源。'),
+    ('c16', '08_open', '软件 Apache 二点零，硬件 C E R N O H L S，文档 C C B Y 四点零。', '软件 Apache 2.0，', '硬件 CERN-OHL-S，文档 CC BY 4.0。'),
+    ('c17', '08_open', '十二个 pytest，GitHub Actions 持续集成。别人可以照着 B O M，装出同一台设备。', '12 个 pytest，GitHub Actions 持续集成。', '别人可以照着 BOM，装出同一台设备。'),
+    ('c18', '09_close', '让数据在采集现场，就变少、变可用、变得可交付。', '让数据在采集现场，', '就变少、变可用、变得可交付。'),
+    ('c19', '09_close', '具身数据驿，期待在开源社区见面。', '具身数据驿，', '期待在开源社区见面。'),
 ]
+
 
 
 def sign(key: bytes, msg: str) -> bytes:
@@ -123,14 +117,15 @@ def build_timeline() -> dict:
     rows = []
     cursor = PRE
     prev_scene = None
-    for cid, scene, text, sub in CLIPS:
+    for cid, scene, tts_text, line1, line2 in CLIPS:
+        sub = line1 if not line2 else line1 + chr(92) + "N" + line2
         mp3 = CLIP_AUDIO / f"{cid}.mp3"
         wav = CLIP_AUDIO / f"{cid}.wav"
         if not mp3.exists():
             for attempt in range(1, 4):
                 try:
-                    print("tts", cid, "attempt", attempt, text[:24])
-                    tts(text, mp3)
+                    print("tts", cid, "attempt", attempt, tts_text[:24])
+                    tts(tts_text, mp3)
                     break
                 except Exception as exc:
                     print("retry", cid, type(exc).__name__, exc)
@@ -141,7 +136,7 @@ def build_timeline() -> dict:
         if prev_scene is not None:
             cursor += SCENE_GAP if scene != prev_scene else GAP
         rows.append({
-            "id": cid, "scene": scene, "text": text, "sub": sub,
+            "id": cid, "scene": scene, "text": tts_text, "sub": sub,
             "audio": str(wav), "start": round(cursor, 3),
             "end": round(cursor + dur, 3), "duration": round(dur, 3),
         })
