@@ -103,8 +103,8 @@
     <div class="meta">
       <div><span>参赛赛道</span>开源智能硬件解决方案</div>
       <div><span>申报主体</span>高校团队</div>
-      <div><span>项目负责人</span>见报名表</div>
-      <div><span>团队人数</span>见报名表</div>
+      <div><span>项目负责人</span>叶海洋</div>
+      <div><span>团队人数</span>1</div>
       <div><span>代码仓库</span>https://github.com/caijiye/embodied-data-relay</div>
       <div><span>演示视频</span>见提交邮件</div>
     </div>
@@ -112,11 +112,30 @@
   </div>
 </section>
 
+<!-- ============ TOC ============ -->
+<section class="page-break">
+  <div class="kicker">目录</div>
+  <h2>目录</h2>
+  <div class="toc">
+    <div><b>01</b> 一页看懂：问题、方案与三个数字</div>
+    <div><b>02</b> 问题：采集—存储—交付的成本结构</div>
+    <div><b>03</b> 方案：五层数据链路</div>
+    <div><b>04</b> 硬件：可复现的边缘数据站</div>
+    <div><b>05</b> 差异：工作负载感知的分层设计</div>
+    <div><b>06</b> 证据：benchmark 与真实数据 pilot</div>
+    <div><b>07</b> 开源治理：可复现、可协作</div>
+    <div><b>08</b> 长期发展：从单机到数据基础设施</div>
+    <div><b>09</b> 团队</div>
+    <div><b>10</b> 参考资料</div>
+  </div>
+  <p class="small" style="margin-top: 18px;">项目名称：具身数据驿｜边缘减量 · 冷热分层 · 弱网快传</p>
+</section>
+
 <!-- ============ 1. ONE PAGE ============ -->
 <section class="page-break">
   <div class="kicker">01 · 一页看懂</div>
-  <h2>不是更便宜的存储，而是采集现场的数据减量站</h2>
-  <p class="lead">具身智能的数据瓶颈，不是「存不下」，而是「存了大量不可用数据，还传不走」。具身数据驿在采集现场完成会话级无损写入、质量门禁、训练格式压缩、热冷分层和可恢复交付，把原始 TB 变成可训练小时。</p>
+  <h2>采集现场的数据减量站</h2>
+  <p class="lead">具身智能的数据瓶颈集中在两处：大量不可用数据占用存储，弱网上传又拖慢交付。具身数据驿在采集现场完成会话级无损写入、质量门禁、训练格式压缩、热冷分层和可恢复交付，把原始 TB 变成可训练小时。</p>
 
   <div class="grid-3" style="margin-top: 12px;">
     <div class="stat"><strong>13.53×</strong><span>10 Mbps 上行下端到端加速<br>（123.9 s → 9.2 s，合成数据）</span></div>
@@ -145,7 +164,7 @@
       <p>交付形态是一台可复现的边缘数据站：小主机 + NVMe + HDD + UPS + ESP32 健康监控。BOM、接线、3D 外壳、固件全部开源，别人能照着装出来。</p>
     </div>
     <div class="card">
-      <h4>为什么不是 NAS / 缓存盘</h4>
+      <h4>与 NAS / 缓存盘的差异</h4>
       <p>通用 NAS 与 bcache/dm-cache 不感知录制会话；具身数据是大块顺序写，bcache 默认还会绕过顺序 IO。我们把「会话封存、质量门禁、交付优先级」放在存储路径里。</p>
     </div>
   </div>
@@ -199,7 +218,7 @@
   <p>对每个 episode 抽样帧，计算 Laplacian 方差（模糊）、灰度均值（过暗/过曝）、黑帧比例、连续帧差异（重复）。输出 0-100 分与 <code>pass / review / quarantine</code>；<b>只隔离，不删除</b>，隔离数据仍可在冷层追溯。</p>
 
   <h3>3. 训练格式减量</h3>
-  <p>图像序列/视频统一转 H.264 MP4；状态保留 JSONL/Parquet；生成含 sha256 的 manifest。目标不是「无损归档」，而是「训练就绪包」：更少的字节、更明确的 episode 边界、可直接按 episode 随机读。</p>
+  <p>图像序列/视频统一转 H.264 MP4；状态保留 JSONL/Parquet；生成含 sha256 的 manifest。输出是「训练就绪包」：更少的字节、更明确的 episode 边界、可直接按 episode 随机读。</p>
 
   <h3>4. 热冷分层</h3>
   <p>热层 NVMe 保存最近会话、待交付与优先 episode；冷层 HDD 保存已交付历史数据；SQLite 常驻元数据。训练端按 episode 取用，不需要整包下载。</p>
@@ -236,7 +255,7 @@
   <div class="kicker">04 · 硬件设计</div>
   <h2>一台 &lt; 5000 元的可复现边缘数据站</h2>
 
-  <p>硬件不是「新介质」，而是为具身数据工作负载设计的<b>软硬一体整机</b>：NVMe 缓冲、HDD 容量、UPS 掉电保护、ESP32 健康监控、开源外壳与接线。</p>
+  <p>硬件围绕具身数据工作负载设计：<b>软硬一体整机</b>，包含 NVMe 缓冲、HDD 容量、UPS 掉电保护、ESP32 健康监控、开源外壳与接线。</p>
 
   <table>
     <thead><tr><th>部件</th><th>规格</th><th class="num">数量</th><th class="num">参考价（元）</th><th>作用</th></tr></thead>
@@ -281,7 +300,7 @@
 <!-- ============ 5. DIFFERENTIATION ============ -->
 <section class="page-break">
   <div class="kicker">05 · 技术差异</div>
-  <h2>为什么不是「SSD + HDD 的简单组合」</h2>
+  <h2>工作负载感知的分层设计</h2>
 
   <p>「SSD 做缓存、HDD 做容量」是成熟技术：bcache、dm-cache、ZFS L2ARC、LVM cache 都能做。我们的差异不在介质，而在<b>面向具身数据工作负载的路径设计</b>：</p>
 
@@ -306,7 +325,7 @@
     <li><b>失败恢复：</b>episode 记录 attempts/last_error；转码失败自动重试（默认 3 次），超过后 failed；pipeline 文件锁防止并发；磁盘不足拒绝转码；<code>edr requeue</code> 人工重排。</li>
   </ul>
 
-  <div class="warn"><b>边界与诚实声明：</b>当前 MVP 不做任务成功判定、不做自动标注、不做多节点集群；质量门禁是图像质量指标，不是「数据价值」的最终判断。真实数据的减量比例会低于合成数据。</div>
+  <div class="warn"><b>边界与诚实声明：</b>当前 MVP 不做任务成功判定、不做自动标注、不做多节点集群；质量门禁只判断图像质量，不判断数据价值。真实数据的减量比例会低于合成数据。</div>
 </section>
 
 <!-- ============ 6. BENCHMARK ============ -->
@@ -362,7 +381,7 @@ python scripts/benchmark.py --clean --sessions 2 --episodes 7 \
 <!-- ============ 7. OPEN SOURCE ============ -->
 <section class="page-break">
   <div class="kicker">07 · 开源治理</div>
-  <h2>不是「代码丢上 GitHub」，而是可复现、可协作</h2>
+  <h2>可复现、可协作的开源交付</h2>
 
   <div class="grid-2">
     <div class="card">
@@ -441,7 +460,7 @@ tests/               12 个 pytest（质量门禁、管线、API、重试、分�
     <li>与 LeRobot / MCAP / ROS 2 生态兼容，降低集成成本。</li>
   </ul>
 
-  <div class="note"><b>可持续性：</b>项目解决的是采集现场的刚性成本问题（存储、带宽、清洗人力），不是一次性 Demo。开源硬件降低信任门槛，整机与服务形成收入；路线图按真实 pilot 反馈迭代。</div>
+  <div class="note"><b>可持续性：</b>项目解决的是采集现场的刚性成本问题（存储、带宽、清洗人力），具备持续运营价值。开源硬件降低信任门槛，整机与服务形成收入；路线图按真实 pilot 反馈迭代。</div>
 </section>
 
 <!-- ============ 9. TEAM ============ -->
@@ -449,9 +468,17 @@ tests/               12 个 pytest（质量门禁、管线、API、重试、分�
   <div class="kicker">09 · 团队</div>
   <h2>团队与分工</h2>
 
-  <p>本项目由高校团队完成，负责人及成员信息见官网报名表。分工覆盖软件管线、数据与算法、硬件/结构、视频/文档。</p>
+  <p>项目负责人：叶海洋；团队人数：1。</p>
 
-  <p class="small">当前为高校团队主导的 MVP，团队 ≤8 人；赛后计划招募 2-3 名 co-maintainer（嵌入式/数据工程/文档社区）。</p>
+  <h3>项目分工</h3>
+  <ul>
+    <li>整体方案、软件管线、benchmark、参赛材料：叶海洋</li>
+    <li>硬件 BOM、接线、外壳、ESP32 固件：叶海洋</li>
+    <li>质量门禁、真实数据 pilot、LeRobot 适配：叶海洋</li>
+    <li>演示视频、PDF、README/治理文档：叶海洋</li>
+  </ul>
+
+  <p class="small">当前为高校团队 MVP，团队 ≤8 人；赛后计划招募 2-3 名 co-maintainer（嵌入式/数据工程/文档社区）。</p>
 
   <h3>赛事期间投入</h3>
   <ul>
@@ -464,35 +491,11 @@ tests/               12 个 pytest（质量门禁、管线、API、重试、分�
   <p>负责人联系方式见官网报名表。<br>代码仓库：https://github.com/caijiye/embodied-data-relay<br>会务组：bjoscc@oschina.cn</p>
 </section>
 
-<!-- ============ 10. APPENDIX ============ -->
+<!-- ============ 10. REFERENCES ============ -->
 <section class="page-break">
-  <div class="kicker">10 · 附录</div>
-  <h2>赛事映射与参考</h2>
-
-  <h3>赛道二要求对照</h3>
-  <table>
-    <thead><tr><th>要求</th><th>我们的交付</th></tr></thead>
-    <tbody>
-      <tr><td>以硬件或软硬一体为核心交付</td><td>边缘数据站整机：小主机 + NVMe + HDD + UPS + ESP32；软件是整机的一部分</td></tr>
-      <tr><td>固件/控制程序源码</td><td>ESP32-S3 固件、Python 管线、benchmark 脚本</td></tr>
-      <tr><td>结构件 3D 模型/图纸</td><td>OpenSCAD 参数化托盘，可导出 STL/STEP</td></tr>
-      <tr><td>BOM/装配说明</td><td>BOM、接线图、装配顺序、安全边界</td></tr>
-      <tr><td>可供他人复现</td><td>bootstrap、合成数据、测试、benchmark、部署手册</td></tr>
-    </tbody>
-  </table>
-
-  <h3>评分维度对照</h3>
-  <table>
-    <thead><tr><th>维度</th><th>权重</th><th>我们的证据</th></tr></thead>
-    <tbody>
-      <tr><td>技术创新</td><td>30%</td><td>会话感知写入、质量门禁、交付感知分层；与 bcache/NAS/云对照</td></tr>
-      <tr><td>场景落地</td><td>30%</td><td>70+ 训练场真实痛点；可运行管线；benchmark；成本模型</td></tr>
-      <tr><td>开源治理</td><td>20%</td><td>Apache-2.0 + CERN-OHL-S；CI；CONTRIBUTING/SECURITY/GOVERNANCE；BOM/外壳/固件</td></tr>
-      <tr><td>长期发展</td><td>20%</td><td>ROADMAP；pilot 计划；开源核心 + 硬件/服务；生态兼容</td></tr>
-    </tbody>
-  </table>
-
-  <h3>参考资料</h3>
+  <div class="kicker">10 · 参考资料</div>
+  <h2>参考资料</h2>
+  <p class="small">以下资料用于行业数据、技术路线与开源组件的公开来源说明。</p>
   <ol class="refs">
     <li>第四届开放原子大赛·2026 官网：https://www.oschina.net/oa2026/</li>
     <li>具身智能数据产业爆发，数据资产迎来价值重估（2026-10-19）：https://finance.sina.com.cn/jjxw/2026-10-19/doc-inivtchu0786775.shtml</li>
