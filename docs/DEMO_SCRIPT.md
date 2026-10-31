@@ -4,7 +4,7 @@
 - GitHub 镜像：https://github.com/caijiye/embodied-data-relay
 - 时长：2 分 28 秒；1920×1080 / 30fps / H.264 + AAC
 - 旁白：腾讯云 TTS 402002（云大围），Speed 0；每页一整段音频，页间 0.3 秒
-- 字幕：不做逐句字幕；页面本身写清关键数字
+- 字幕：按页整块显示，每页 4 行；不做逐句切分，旁白按页整段合成
 - 风格：白底工程说明，不做暗色发光、英文 kicker、大口号
 
 ## 页面
@@ -29,7 +29,10 @@ python scripts/make_video_v4_slides.py
 export TENCENTCLOUD_SECRET_ID=...
 export TENCENTCLOUD_SECRET_KEY=...
 python scripts/make_video_v4.py
+
+# 3. 在成片上叠加页级字幕
+python scripts/add_captions_v4.py
 ```
 
-产物：`data/video/v4/demo.mp4`（`data/` 已 gitignore；成片同时提交到仓库 `docs/submission/demo.mp4`）。
+产物：`data/video/v6/demo.mp4`（`data/` 已 gitignore；成片同时提交到仓库 `docs/submission/demo.mp4`）。
 密钥只通过环境变量传入，不写入仓库。

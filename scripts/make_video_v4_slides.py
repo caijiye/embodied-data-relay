@@ -291,12 +291,8 @@ def page_results():
         d.text((1074, y + 18), big, font=f(36, True), fill=color)
         d.text((1074, y + 78), small, font=f(18), fill=GRAY)
 
-    # timeline
-    d.text((108, 892), "基线 123.9 s", font=f(18), fill=MUTED)
-    d.rounded_rectangle((280, 900, 1480, 930), radius=6, fill=(229, 231, 235))
-    d.rounded_rectangle((280, 945, 280 + 76, 975), radius=6, fill=TEAL)
-    d.text((280 + 90, 947), "本方案 9.2 s", font=f(18, True), fill=TEAL)
-    d.text((1520, 890), "13.53×", font=fn(48), fill=ORANGE)
+    d.text((1050, 752), "13.53×", font=fn(54), fill=ORANGE)
+    d.text((1198, 772), "端到端加速", font=f(18), fill=MUTED)
     img.save(OUT / "06_results.png")
 
 
@@ -325,11 +321,6 @@ def page_cost_compare():
         d.text((x - 14, 778), ["0", "1万", "2万", "3万"][i], font=f(14), fill=MUTED)
 
     d.text((108, 820), "混合含主机、UPS、外壳；全闪仅介质；云为首年存储，不含流量。", font=f(15), fill=MUTED)
-    d.rounded_rectangle((108, 880, 1708, 960), radius=10, fill=SOFT_TEAL, outline=(147, 197, 221), width=1)
-    d.rectangle((108, 880, 114, 960), fill=TEAL)
-    d.text((140, 900), "先存得下，再谈训练。", font=f(26, True), fill=(21, 94, 117))
-    d.text((140, 938), "代码 / BOM / 接线：gitee.com/yhy196/embodied-data-relay",
-           font=f(14), fill=GRAY)
     img.save(OUT / "07_cost.png")
 
 
