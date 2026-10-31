@@ -27,8 +27,8 @@ VOICE = 402002
 MODEL = 1
 SR = 24000
 PRE = 0.25
-GAP = 0.18
-SCENE_GAP = 0.45
+GAP = 1.0
+SCENE_GAP = 1.0
 TAIL = 0.35
 
 # (clip id, scene, tts text, subtitle text with \N line break)
@@ -102,11 +102,9 @@ def tts(text: str, out: Path) -> None:
 
 
 def to_wav(src: Path, dst: Path) -> float:
-    # trim leading/trailing silence so the measured duration is the spoken clip
+    # keep the TTS output as-is: no trimming, no silence removal
     subprocess.run([
         "ffmpeg", "-y", "-v", "error", "-i", str(src),
-        "-af", "silenceremove=start_periods=1:start_duration=0.04:start_threshold=-45dB,"
-               "areverse,silenceremove=start_periods=1:start_duration=0.08:start_threshold=-45dB,areverse",
         "-ar", "48000", "-ac", "1", "-sample_fmt", "s16", str(dst),
     ], check=True)
     with wave.open(str(dst), "rb") as w:
