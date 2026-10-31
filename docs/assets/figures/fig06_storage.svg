@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="482.91375pt" height="178.984699pt" viewBox="0 0 482.91375 178.984699" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-31T18:11:51.185833</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 178.984699 
+L 482.91375 178.984699 
+L 482.91375 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 38.67375 147.031437 
+L 479.31375 147.031437 
+L 479.31375 20.023437 
+L 38.67375 20.023437 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m4c6859462a" d="M 0 0 
+L 0 2.2 
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m4c6859462a" x="89.516827" y="147.031437" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 10px; font-family: 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #595959" x="89.516827" y="161.065812" transform="rotate(-0 89.516827 161.065812)">低</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m4c6859462a" x="258.99375" y="147.031437" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 10px; font-family: 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #595959" x="258.99375" y="161.065812" transform="rotate(-0 258.99375 161.065812)">中</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m4c6859462a" x="428.470673" y="147.031437" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 10px; font-family: 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #595959" x="428.470673" y="161.173625" transform="rotate(-0 428.470673 161.173625)">高</text>
+     </g>
+    </g>
+    <g id="text_4">
+     <text style="font-size: 7px; font-family: 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #595959" x="258.99375" y="173.610773" transform="rotate(-0 258.99375 173.610773)">相对成本 / TB（示意）</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_4">
+      <defs>
+       <path id="mfcc9eb65fd" d="M 0 0 
+L -2.2 0 
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mfcc9eb65fd" x="38.67375" y="132.376668" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 10px; font-family: 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #595959" x="32.97375" y="136.543856" transform="rotate(-0 32.97375 136.543856)">低</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#mfcc9eb65fd" x="38.67375" y="83.527437" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 10px; font-family: 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #595959" x="32.97375" y="87.694625" transform="rotate(-0 32.97375 87.694625)">中</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#mfcc9eb65fd" x="38.67375" y="34.678207" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 10px; font-family: 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #595959" x="32.97375" y="38.8993" transform="rotate(-0 32.97375 38.8993)">高</text>
+     </g>
+    </g>
+    <g id="text_8">
+     <text style="font-size: 7px; font-family: 'Microsoft YaHei', 'DejaVu Sans', sans-serif; fill: #595959" transform="translate(9.51835 101.027437) rotate(-90)">热路径性能</text>
+     <text style="font-size: 7px; font-family: 'Microsoft YaHei', 'DejaVu Sans', sans-serif; fill: #595959" transform="translate(17.184443 118.594156) rotate(-90)">（写入突发 / 随机读）</text>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 38.67375 147.031437 
+L 38.67375 20.023437 
+" style="fill: none; stroke: #bfbfbf; stroke-width: 0.7; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 38.67375 147.031437 
+L 479.31375 147.031437 
+" style="fill: none; stroke: #bfbfbf; stroke-width: 0.7; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 8px; font-family: 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #595959" x="89.516827" y="114.491745" transform="rotate(-0 89.516827 114.491745)">全 HDD</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 8px; font-family: 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #2c6e8f" x="165.781442" y="39.660361" transform="rotate(-0 165.781442 39.660361)">混合分层</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 8px; font-family: 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #e36c09" x="428.470673" y="21.678207" transform="rotate(-0 428.470673 21.678207)">全 NVMe</text>
+   </g>
+   <g id="patch_5">
+    <path d="M 214.614184 81.700314 
+Q 191.087496 69.63654 167.560809 57.572766 
+" style="fill: none; stroke: #2c6e8f; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 6.6px; font-family: 'Microsoft YaHei', 'DejaVu Sans', sans-serif; fill: #2c6e8f" transform="translate(194.592519 89.989566)">2 TB NVMe + 16 TB HDD</text>
+    <text style="font-size: 6.6px; font-family: 'Microsoft YaHei', 'DejaVu Sans', sans-serif; fill: #2c6e8f" transform="translate(194.592519 97.205222)">热比例 ~11%</text>
+   </g>
+   <g id="patch_6">
+    <path d="M 99.483205 123.718779 
+Q 237.245911 1.442536 416.278925 36.390531 
+" style="fill: none; stroke: #dce6f1; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 412.7362 33.661228 
+L 416.278925 36.390531 
+L 411.969848 37.587129 
+" style="fill: none; stroke: #dce6f1; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 5.9px; font-family: 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #595959" x="42.063288" y="25.885345" transform="rotate(-0 42.063288 25.885345)">按实际报价；冷层可替换为 HDD / NVMe / 网络挂载 / S3 / 数据胶囊。</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 10px; font-family: 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #1f3864" x="38.67375" y="12.023437" transform="rotate(-0 38.67375 12.023437)">存储经济学：混合分层位于成本-性能拐点</text>
+   </g>
+   <g id="PathCollection_1">
+    <defs>
+     <path id="m31a169084d" d="M 0 5.700877 
+C 1.51189 5.700877 2.962061 5.100197 4.031129 4.031129 
+C 5.100197 2.962061 5.700877 1.51189 5.700877 0 
+C 5.700877 -1.51189 5.100197 -2.962061 4.031129 -4.031129 
+C 2.962061 -5.100197 1.51189 -5.700877 0 -5.700877 
+C -1.51189 -5.700877 -2.962061 -5.100197 -4.031129 -4.031129 
+C -5.100197 -2.962061 -5.700877 -1.51189 -5.700877 0 
+C -5.700877 1.51189 -5.100197 2.962061 -4.031129 4.031129 
+C -2.962061 5.100197 -1.51189 5.700877 0 5.700877 
+z
+" style="stroke: #ffffff; stroke-width: 1.3"/>
+    </defs>
+    <g clip-path="url(#pbcf8eb6d8f)">
+     <use xlink:href="#m31a169084d" x="89.516827" y="127.491745" style="fill: #595959; stroke: #ffffff; stroke-width: 1.3"/>
+    </g>
+   </g>
+   <g id="PathCollection_2">
+    <defs>
+     <path id="m4464ec90f4" d="M 0 8.660254 
+C 2.296726 8.660254 4.499694 7.747755 6.123724 6.123724 
+C 7.747755 4.499694 8.660254 2.296726 8.660254 0 
+C 8.660254 -2.296726 7.747755 -4.499694 6.123724 -6.123724 
+C 4.499694 -7.747755 2.296726 -8.660254 0 -8.660254 
+C -2.296726 -8.660254 -4.499694 -7.747755 -6.123724 -6.123724 
+C -7.747755 -4.499694 -8.660254 -2.296726 -8.660254 0 
+C -8.660254 2.296726 -7.747755 4.499694 -6.123724 6.123724 
+C -4.499694 7.747755 -2.296726 8.660254 0 8.660254 
+z
+" style="stroke: #ffffff; stroke-width: 1.3"/>
+    </defs>
+    <g clip-path="url(#pbcf8eb6d8f)">
+     <use xlink:href="#m4464ec90f4" x="165.781442" y="56.660361" style="fill: #2c6e8f; stroke: #ffffff; stroke-width: 1.3"/>
+    </g>
+   </g>
+   <g id="PathCollection_3">
+    <defs>
+     <path id="m5b47540129" d="M 0 6.519202 
+C 1.728913 6.519202 3.387246 5.832298 4.609772 4.609772 
+C 5.832298 3.387246 6.519202 1.728913 6.519202 0 
+C 6.519202 -1.728913 5.832298 -3.387246 4.609772 -4.609772 
+C 3.387246 -5.832298 1.728913 -6.519202 0 -6.519202 
+C -1.728913 -6.519202 -3.387246 -5.832298 -4.609772 -4.609772 
+C -5.832298 -3.387246 -6.519202 -1.728913 -6.519202 0 
+C -6.519202 1.728913 -5.832298 3.387246 -4.609772 4.609772 
+C -3.387246 5.832298 -1.728913 6.519202 0 6.519202 
+z
+" style="stroke: #ffffff; stroke-width: 1.3"/>
+    </defs>
+    <g clip-path="url(#pbcf8eb6d8f)">
+     <use xlink:href="#m5b47540129" x="428.470673" y="34.678207" style="fill: #e36c09; stroke: #ffffff; stroke-width: 1.3"/>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pbcf8eb6d8f">
+   <rect x="38.67375" y="20.023437" width="440.64" height="127.008"/>
+  </clipPath>
+ </defs>
+</svg>

@@ -30,3 +30,9 @@ hardware/firmware/include/secrets.h
 # Build
 dist/
 build/
+
+# Generated submission artifacts
+docs/submission/proposal_v4.pdf
+docs/assets/figures/contact_sheet*.png
+docs/assets/figures/fig08_hardware_v2.png
+docs/assets/figures/fig08_hardware_v3.png

@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="525.6pt" height="230.4pt" viewBox="0 0 525.6 230.4" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-31T18:11:52.092956</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 230.4 
+L 525.6 230.4 
+L 525.6 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 70.88832 215.68464 
+L 454.71168 215.68464 
+Q 459.89568 215.68464 459.89568 213.45264 
+L 459.89568 208.89936 
+Q 459.89568 206.66736 454.71168 206.66736 
+L 70.88832 206.66736 
+Q 65.70432 206.66736 65.70432 208.89936 
+L 65.70432 213.45264 
+Q 65.70432 215.68464 70.88832 215.68464 
+L 70.88832 215.68464 
+z
+" clip-path="url(#pb6d416bc4a)" style="fill: none; stroke-dasharray: 2.7,1.8; stroke-dashoffset: 0; stroke: #595959; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 197.37792 68.81904 
+L 340.66368 68.81904 
+Q 346.88448 68.81904 346.88448 66.14064 
+L 346.88448 51.32016 
+Q 346.88448 48.64176 340.66368 48.64176 
+L 197.37792 48.64176 
+Q 191.15712 48.64176 191.15712 51.32016 
+L 191.15712 66.14064 
+Q 191.15712 68.81904 197.37792 68.81904 
+z
+" clip-path="url(#pb6d416bc4a)" style="fill: #e8edf3"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 171.45792 113.45904 
+L 366.58368 113.45904 
+Q 372.80448 113.45904 372.80448 110.78064 
+L 372.80448 82.56816 
+Q 372.80448 79.88976 366.58368 79.88976 
+L 171.45792 79.88976 
+Q 165.23712 79.88976 165.23712 82.56816 
+L 165.23712 110.78064 
+Q 165.23712 113.45904 171.45792 113.45904 
+z
+" clip-path="url(#pb6d416bc4a)" style="fill: #e8edf3"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 155.90592 153.63504 
+L 382.13568 153.63504 
+Q 388.35648 153.63504 388.35648 150.95664 
+L 388.35648 131.67216 
+Q 388.35648 128.99376 382.13568 128.99376 
+L 155.90592 128.99376 
+Q 149.68512 128.99376 149.68512 131.67216 
+L 149.68512 150.95664 
+Q 149.68512 153.63504 155.90592 153.63504 
+z
+" clip-path="url(#pb6d416bc4a)" style="fill: #e8edf3"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 98.88192 193.81104 
+L 226.61568 193.81104 
+Q 232.83648 193.81104 232.83648 191.13264 
+L 232.83648 174.08016 
+Q 232.83648 171.40176 226.61568 171.40176 
+L 98.88192 171.40176 
+Q 92.66112 171.40176 92.66112 174.08016 
+L 92.66112 191.13264 
+Q 92.66112 193.81104 98.88192 193.81104 
+z
+" clip-path="url(#pb6d416bc4a)" style="fill: #e8edf3"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 306.24192 193.81104 
+L 433.97568 193.81104 
+Q 440.19648 193.81104 440.19648 191.13264 
+L 440.19648 174.08016 
+Q 440.19648 171.40176 433.97568 171.40176 
+L 306.24192 171.40176 
+Q 300.02112 171.40176 300.02112 174.08016 
+L 300.02112 191.13264 
+Q 300.02112 193.81104 306.24192 193.81104 
+z
+" clip-path="url(#pb6d416bc4a)" style="fill: #e8edf3"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 262.8 67.095932 
+Q 262.8 71.677388 262.8 75.029007 
+" clip-path="url(#pb6d416bc4a)" style="fill: none; stroke: #2c6e8f; stroke-width: 1.1; stroke-linecap: round"/>
+    <path d="M 264.6 71.429007 
+L 262.8 75.029007 
+L 261 71.429007 
+z
+" clip-path="url(#pb6d416bc4a)" style="fill: #2c6e8f; stroke: #2c6e8f; stroke-width: 1.1; stroke-linecap: round"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 262.8 111.739201 
+Q 262.8 118.548081 262.8 124.127124 
+" clip-path="url(#pb6d416bc4a)" style="fill: none; stroke: #e36c09; stroke-width: 1.1; stroke-linecap: round"/>
+    <path d="M 264.6 120.527124 
+L 262.8 124.127124 
+L 261 120.527124 
+z
+" clip-path="url(#pb6d416bc4a)" style="fill: #e36c09; stroke: #e36c09; stroke-width: 1.1; stroke-linecap: round"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 154.367878 167.861461 
+Q 170.481384 134.296508 198.833989 112.108027 
+" clip-path="url(#pb6d416bc4a)" style="fill: none; stroke: #c9a227; stroke-width: 1.1; stroke-linecap: round"/>
+    <path d="M 194.889607 112.909184 
+L 198.833989 112.108027 
+L 197.108285 115.744227 
+z
+" clip-path="url(#pb6d416bc4a)" style="fill: #c9a227; stroke: #c9a227; stroke-width: 1.1; stroke-linecap: round"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 360.918519 167.844507 
+Q 347.337629 134.91087 321.502318 112.206763 
+" clip-path="url(#pb6d416bc4a)" style="fill: none; stroke: #2c6e8f; stroke-width: 1.1; stroke-linecap: round"/>
+    <path d="M 323.018276 115.935284 
+L 321.502318 112.206763 
+L 325.39471 113.231108 
+z
+" clip-path="url(#pb6d416bc4a)" style="fill: #2c6e8f; stroke: #2c6e8f; stroke-width: 1.1; stroke-linecap: round"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 367.480951 95.112 
+Q 415.727135 95.112 462.743482 95.112 
+" clip-path="url(#pb6d416bc4a)" style="fill: none; stroke: #595959; stroke-width: 1.1; stroke-linecap: round"/>
+    <path d="M 459.143482 93.312 
+L 462.743482 95.112 
+L 459.143482 96.912 
+z
+" clip-path="url(#pb6d416bc4a)" style="fill: #595959; stroke: #595959; stroke-width: 1.1; stroke-linecap: round"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 191.15712 66.14064 
+L 334.44288 66.14064 
+Q 340.66368 66.14064 340.66368 63.46224 
+L 340.66368 48.64176 
+Q 340.66368 45.96336 334.44288 45.96336 
+L 191.15712 45.96336 
+Q 184.93632 45.96336 184.93632 48.64176 
+L 184.93632 63.46224 
+Q 184.93632 66.14064 191.15712 66.14064 
+z
+" clip-path="url(#pb6d416bc4a)" style="fill: #dce6f1; stroke: #2c6e8f; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 165.23712 110.78064 
+L 360.36288 110.78064 
+Q 366.58368 110.78064 366.58368 108.10224 
+L 366.58368 79.88976 
+Q 366.58368 77.21136 360.36288 77.21136 
+L 165.23712 77.21136 
+Q 159.01632 77.21136 159.01632 79.88976 
+L 159.01632 108.10224 
+Q 159.01632 110.78064 165.23712 110.78064 
+z
+" clip-path="url(#pb6d416bc4a)" style="fill: #f2f8fc; stroke: #2c6e8f; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 149.68512 150.95664 
+L 375.91488 150.95664 
+Q 382.13568 150.95664 382.13568 148.27824 
+L 382.13568 128.99376 
+Q 382.13568 126.31536 375.91488 126.31536 
+L 149.68512 126.31536 
+Q 143.46432 126.31536 143.46432 128.99376 
+L 143.46432 148.27824 
+Q 143.46432 150.95664 149.68512 150.95664 
+z
+" clip-path="url(#pb6d416bc4a)" style="fill: #fbf6ef; stroke: #e36c09; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 92.66112 191.13264 
+L 220.39488 191.13264 
+Q 226.61568 191.13264 226.61568 188.45424 
+L 226.61568 171.40176 
+Q 226.61568 168.72336 220.39488 168.72336 
+L 92.66112 168.72336 
+Q 86.44032 168.72336 86.44032 171.40176 
+L 86.44032 188.45424 
+Q 86.44032 191.13264 92.66112 191.13264 
+z
+" clip-path="url(#pb6d416bc4a)" style="fill: #fff7e6; stroke: #c9a227; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 300.02112 191.13264 
+L 427.75488 191.13264 
+Q 433.97568 191.13264 433.97568 188.45424 
+L 433.97568 171.40176 
+Q 433.97568 168.72336 427.75488 168.72336 
+L 300.02112 168.72336 
+Q 293.80032 168.72336 293.80032 171.40176 
+L 293.80032 188.45424 
+Q 293.80032 191.13264 300.02112 191.13264 
+z
+" clip-path="url(#pb6d416bc4a)" style="fill: #f2f8fc; stroke: #2c6e8f; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 10px; font-family: 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #1f3864" x="13.968" y="17.714004" transform="rotate(-0 13.968 17.714004)">硬件参考设计：把分层放进一台边缘节点</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 6.4px; font-family: 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #595959" x="13.968" y="30.020562" transform="rotate(-0 13.968 30.020562)">成本目标 &lt; ¥5000（不含已有主机 / 硬盘）</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 7.8px; font-family: 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #1f3864" x="262.8" y="55.513334" transform="rotate(-0 262.8 55.513334)">120 mm 风扇</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 6.2px; font-family: 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #595959" x="262.8" y="62.246381" transform="rotate(-0 262.8 62.246381)">风道 / 防尘网</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 7.8px; font-family: 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #1f3864" x="262.8" y="91.597689" transform="rotate(-0 262.8 91.597689)">x86 小主机 (N100/i5)</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 6.2px; font-family: 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #595959" x="262.8" y="102.859578" transform="rotate(-0 262.8 102.859578)">2 TB NVMe · 热层</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 7.8px; font-family: 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #1f3864" x="262.8" y="137.449827" transform="rotate(-0 262.8 137.449827)">16 TB HDD · 冷层</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 6.2px; font-family: 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #595959" x="262.8" y="145.704775" transform="rotate(-0 262.8 145.704775)">减震 + 间距 ≥10 mm</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 7.8px; font-family: 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #1f3864" x="156.528" y="178.981716" transform="rotate(-0 156.528 178.981716)">UPS 600 VA</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 6.2px; font-family: 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #595959" x="156.528" y="186.568781" transform="rotate(-0 156.528 186.568781)">掉电保护</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 7.8px; font-family: 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #1f3864" x="363.888" y="178.981716" transform="rotate(-0 363.888 178.981716)">ESP32-S3</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 6.2px; font-family: 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #595959" x="363.888" y="186.595906" transform="rotate(-0 363.888 186.595906)">温度 / 风扇 / 电流</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 6.4px; font-family: 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #595959" x="467.568" y="90.288062" transform="rotate(-0 467.568 90.288062)">2.5GbE → 训练端</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 6.4px; font-family: 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #2c6e8f" x="13.968" y="56.789062" transform="rotate(-0 13.968 56.789062)">热层：NVMe</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 6.4px; font-family: 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #e36c09" x="13.968" y="72.407062" transform="rotate(-0 13.968 72.407062)">冷层：HDD</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 6.4px; font-family: 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #c9a227" x="13.968" y="88.043562" transform="rotate(-0 13.968 88.043562)">保护：UPS</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 6.4px; font-family: 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #2c6e8f" x="13.968" y="103.673562" transform="rotate(-0 13.968 103.673562)">监控：ESP32</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 6.2px; font-family: 'Microsoft YaHei', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #595959" x="262.8" y="212.980297" transform="rotate(-0 262.8 212.980297)">reference design · open BOM / 接线 / SCAD / 固件</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pb6d416bc4a">
+   <rect x="3.6" y="3.6" width="518.4" height="223.2"/>
+  </clipPath>
+ </defs>
+</svg>
