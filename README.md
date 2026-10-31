@@ -6,12 +6,18 @@
 
 代码仓库：https://github.com/caijiye/embodied-data-relay
 
-具身智能的数据采集现场正在被三件事拖住：原始数据量太大、可用率太低、上传交付太慢。具身数据驿是一台开源的边缘数据站：在采集现场完成会话级无损写入、质量门禁、训练格式压缩、热冷分层和可恢复交付，把「原始 TB」变成「可训练小时」。
+具身智能的数据采集现场正在被三件事拖住：原始数据量太大、可用率太低、上传交付太慢。具身数据驿是一台开源的边缘数据站：在采集现场完成会话级原样写入、质量门禁、训练格式压缩、热冷分层和可恢复交付，把「原始 TB」变成「可训练小时」。
 
 > 参赛项目：第四届开放原子大赛·2026 开源行业解决方案创新赛，赛道二「开源智能硬件解决方案」。
 > 状态：MVP 已可运行，2026-10-31 提交。
 
 ![具身数据驿 dashboard](docs/assets/dashboard.png)
+
+## 演示视频与提交材料
+
+- 演示视频（2:11，1080p）：https://github.com/caijiye/embodied-data-relay/releases/download/demo-2026-10-31/demo.mp4
+- 项目介绍 PDF（17 页）：https://github.com/caijiye/embodied-data-relay/blob/master/docs/submission/EDR-proposal.pdf
+- 参赛材料说明：`docs/submission/`
 
 ## 问题
 
